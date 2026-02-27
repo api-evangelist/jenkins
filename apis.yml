@@ -1,0 +1,73 @@
+name: Jenkins
+description: Jenkins is an open source automation server which enables developers around the world to reliably build, test, and deploy their software
+image: https://www.jenkins.io/images/logos/jenkins/jenkins.png
+url: https://www.jenkins.io/
+created: '2024'
+modified: '2024'
+specificationVersion: '0.18'
+tags:
+- CI/CD
+- Continuous Integration
+- Continuous Delivery
+- Automation
+- DevOps
+- Build Server
+- Open Source
+apis:
+- name: Jenkins Remote Access API
+  description: Jenkins provides machine-consumable remote access API to its functionalities. Currently it comes in three flavors - XML, JSON with JSONP support, and Python
+  image: https://www.jenkins.io/images/logos/jenkins/jenkins.png
+  humanURL: https://www.jenkins.io/doc/book/using/remote-access-api/
+  baseURL: https://your-jenkins-instance.com
+  tags:
+  - REST API
+  - Remote Access
+  - JSON
+  - XML
+  - Python
+  properties:
+  - type: Documentation
+    url: https://www.jenkins.io/doc/book/using/remote-access-api/
+  - type: OpenAPI
+    url: https://javadoc.jenkins.io/
+  - type: Authentication
+    url: https://www.jenkins.io/doc/book/system-administration/authenticating-scripted-clients/
+  - type: Swagger
+    url: https://plugins.jenkins.io/openapi/
+  contact:
+  - type: Email
+    url: jenkinsci-dev@googlegroups.com
+  - type: Support
+    url: https://www.jenkins.io/participate/connect/
+  - type: Chat
+    url: https://www.jenkins.io/chat/
+maintainers:
+- name: Jenkins Project
+  email: jenkinsci-dev@googlegroups.com
+  url: https://www.jenkins.io/
+common:
+- type: Getting Started
+  url: https://www.jenkins.io/doc/pipeline/tour/getting-started/
+- type: Installation
+  url: https://www.jenkins.io/doc/book/installing/
+- type: Plugins
+  url: https://plugins.jenkins.io/
+- type: GitHub Organization
+  url: https://github.com/jenkinsci
+- type: Blog
+  url: https://www.jenkins.io/node/
+- type: Community
+  url: https://www.jenkins.io/participate/
+- type: Tutorials
+  url: https://www.jenkins.io/doc/tutorials/
+- type: Security Advisories
+  url: https://www.jenkins.io/security/advisories/
+- type: Governance
+  url: https://www.jenkins.io/project/governance/
+- type: Roadmap
+  url: https://www.jenkins.io/project/roadmap/
+- type: Terms of Service
+  url: https://www.jenkins.io/project/conduct/
+- type: Privacy Policy
+  url: https://www.jenkins.io/privacy/
+include: []
