@@ -8,10 +8,10 @@ description: >-
 type: Index
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 tags:
-  - CI/CD
-  - Continuous Integration
-  - Continuous Delivery
   - Automation
+  - CI/CD
+  - Continuous Delivery
+  - Continuous Integration
   - DevOps
 url: >-
   https://raw.githubusercontent.com/api-evangelist/jenkins/refs/heads/main/apis.yml
@@ -27,9 +27,9 @@ apis:
       JSONP support, and Python.
     humanURL: https://www.jenkins.io/doc/book/using/remote-access-api/
     tags:
-      - REST API
-      - Remote Access
       - JSON
+      - Remote Access
+      - REST API
       - XML
     properties:
       - type: Documentation
