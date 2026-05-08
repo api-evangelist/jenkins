@@ -1,0 +1,204 @@
+openapi: 3.1.0
+info:
+  title: Jenkins Remote Access API
+  description: >-
+    Jenkins exposes a machine-consumable Remote Access API for nearly every
+    resource it manages. The API is accessed by appending /api/ to any Jenkins
+    resource URL (top-level Jenkins, jobs, builds, queue, computers, views).
+    The API supports XML (with XPath filtering), JSON (with JSONP), and a
+    Python-compatible variant. HTTP Basic authentication with API tokens is
+    used for authenticated requests, and the X-Jenkins response header
+    advertises the Jenkins version.
+  version: 1.0.0
+  contact:
+    name: Jenkins Project
+    url: https://www.jenkins.io/
+  license:
+    name: MIT
+    url: https://www.jenkins.io/license/
+  x-generated-from: https://www.jenkins.io/doc/book/using/remote-access-api/
+  x-generated-by: claude-crawl-2026-05-08
+servers:
+  - url: https://{jenkinsHost}
+    description: Self-hosted Jenkins instance
+    variables:
+      jenkinsHost:
+        default: jenkins.example.com
+        description: Hostname (and optional port) of your Jenkins instance.
+security:
+  - basicAuth: []
+tags:
+  - name: Server
+    description: Information about the Jenkins instance.
+  - name: Jobs
+    description: Jenkins jobs and their builds.
+  - name: Queue
+    description: The build queue.
+  - name: Computer
+    description: Connected build agents.
+paths:
+  /api/json:
+    get:
+      tags: [Server]
+      operationId: getJenkinsInfo
+      summary: Get top-level Jenkins information (JSON)
+      parameters:
+        - $ref: '#/components/parameters/Tree'
+        - $ref: '#/components/parameters/Depth'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Resource'
+  /api/xml:
+    get:
+      tags: [Server]
+      operationId: getJenkinsInfoXml
+      summary: Get top-level Jenkins information (XML)
+      parameters:
+        - $ref: '#/components/parameters/Xpath'
+        - $ref: '#/components/parameters/Depth'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/xml:
+              schema:
+                type: string
+  /job/{jobName}/api/json:
+    get:
+      tags: [Jobs]
+      operationId: getJob
+      summary: Get information about a job (JSON)
+      parameters:
+        - $ref: '#/components/parameters/JobName'
+        - $ref: '#/components/parameters/Tree'
+        - $ref: '#/components/parameters/Depth'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Resource'
+  /job/{jobName}/build:
+    post:
+      tags: [Jobs]
+      operationId: triggerBuild
+      summary: Trigger a build for a parameterless job
+      parameters:
+        - $ref: '#/components/parameters/JobName'
+        - name: token
+          in: query
+          required: false
+          schema:
+            type: string
+          description: Authentication token for remote build trigger.
+      responses:
+        '201':
+          description: Build queued
+        '200':
+          description: Accepted
+  /job/{jobName}/buildWithParameters:
+    post:
+      tags: [Jobs]
+      operationId: triggerBuildWithParameters
+      summary: Trigger a build with parameters
+      parameters:
+        - $ref: '#/components/parameters/JobName'
+      requestBody:
+        required: false
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              additionalProperties: true
+      responses:
+        '201':
+          description: Build queued
+        '200':
+          description: Accepted
+  /job/{jobName}/{buildNumber}/api/json:
+    get:
+      tags: [Jobs]
+      operationId: getBuild
+      summary: Get information about a specific build
+      parameters:
+        - $ref: '#/components/parameters/JobName'
+        - name: buildNumber
+          in: path
+          required: true
+          schema:
+            type: string
+        - $ref: '#/components/parameters/Tree'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Resource'
+  /queue/api/json:
+    get:
+      tags: [Queue]
+      operationId: getQueue
+      summary: Get the current build queue
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Resource'
+  /computer/api/json:
+    get:
+      tags: [Computer]
+      operationId: listComputers
+      summary: List connected agents
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Resource'
+components:
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+      description: HTTP Basic auth using a Jenkins user and an API token.
+  parameters:
+    JobName:
+      name: jobName
+      in: path
+      required: true
+      schema:
+        type: string
+    Tree:
+      name: tree
+      in: query
+      required: false
+      schema:
+        type: string
+      description: Filter the response shape by a tree expression.
+    Depth:
+      name: depth
+      in: query
+      required: false
+      schema:
+        type: integer
+      description: Depth of nested objects to include.
+    Xpath:
+      name: xpath
+      in: query
+      required: false
+      schema:
+        type: string
+      description: XPath expression to filter the XML response.
+  schemas:
+    Resource:
+      type: object
+      additionalProperties: true

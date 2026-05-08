@@ -49,6 +49,8 @@ apis:
         url: https://www.jenkins.io/doc/book/system-administration/authenticating-scripted-clients/
       - type: APITokens
         url: https://www.jenkins.io/doc/book/managing/system-configuration/#configuring-api-tokens
+      - url: openapi/jenkins-openapi.yml
+        type: OpenAPI
 common:
   - type: Website
     url: https://www.jenkins.io/
