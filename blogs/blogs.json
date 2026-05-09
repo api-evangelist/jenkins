@@ -4,10 +4,10 @@
     {
       "source": "https://www.jenkins.io/node/",
       "feed_url": "https://www.jenkins.io/rss.xml",
-      "saved": 10,
-      "title": "Jenkins Blog"
+      "title": "Jenkins Blog",
+      "saved": 1
     }
   ],
-  "post_count": 10,
-  "fetched": "2026-05-03T23:30:15Z"
+  "post_count": 11,
+  "fetched": "2026-05-09T20:17:51Z"
 }
