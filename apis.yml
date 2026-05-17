@@ -74,7 +74,7 @@ common:
     url: https://www.jenkins.io/security/advisories/
   - type: Governance
     url: https://www.jenkins.io/project/governance/
-  - type: Roadmap
+  - type: RoadMap
     url: https://www.jenkins.io/project/roadmap/
   - type: PrivacyPolicy
     url: https://www.jenkins.io/privacy/
