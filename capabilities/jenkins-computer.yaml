@@ -1,0 +1,71 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Jenkins Remote Access API — Computer
+  description: 'Jenkins Remote Access API — Computer. 1 operations. Lead operation: List connected agents. Self-contained
+    Naftiko capability covering one Jenkins business surface.'
+  tags:
+  - Jenkins
+  - Computer
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    JENKINS_API_KEY: JENKINS_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: jenkins-computer
+    baseUri: https://{jenkinsHost}
+    description: Jenkins Remote Access API — Computer business capability. Self-contained, no shared references.
+    resources:
+    - name: computer-api-json
+      path: /computer/api/json
+      operations:
+      - name: listcomputers
+        method: GET
+        description: List connected agents
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: basic
+      username: '{{env.JENKINS_USER}}'
+      password: '{{env.JENKINS_PASS}}'
+  exposes:
+  - type: rest
+    namespace: jenkins-computer-rest
+    port: 8080
+    description: REST adapter for Jenkins Remote Access API — Computer. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/computer/api/json
+      name: computer-api-json
+      description: REST surface for computer-api-json.
+      operations:
+      - method: GET
+        name: listcomputers
+        description: List connected agents
+        call: jenkins-computer.listcomputers
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: jenkins-computer-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Jenkins Remote Access API — Computer. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: list-connected-agents
+      description: List connected agents
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: jenkins-computer.listcomputers
+      outputParameters:
+      - type: object
+        mapping: $.

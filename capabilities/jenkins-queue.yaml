@@ -1,0 +1,71 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Jenkins Remote Access API — Queue
+  description: 'Jenkins Remote Access API — Queue. 1 operations. Lead operation: Get the current build queue. Self-contained
+    Naftiko capability covering one Jenkins business surface.'
+  tags:
+  - Jenkins
+  - Queue
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    JENKINS_API_KEY: JENKINS_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: jenkins-queue
+    baseUri: https://{jenkinsHost}
+    description: Jenkins Remote Access API — Queue business capability. Self-contained, no shared references.
+    resources:
+    - name: queue-api-json
+      path: /queue/api/json
+      operations:
+      - name: getqueue
+        method: GET
+        description: Get the current build queue
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: basic
+      username: '{{env.JENKINS_USER}}'
+      password: '{{env.JENKINS_PASS}}'
+  exposes:
+  - type: rest
+    namespace: jenkins-queue-rest
+    port: 8080
+    description: REST adapter for Jenkins Remote Access API — Queue. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/queue/api/json
+      name: queue-api-json
+      description: REST surface for queue-api-json.
+      operations:
+      - method: GET
+        name: getqueue
+        description: Get the current build queue
+        call: jenkins-queue.getqueue
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: jenkins-queue-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Jenkins Remote Access API — Queue. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: get-current-build-queue
+      description: Get the current build queue
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: jenkins-queue.getqueue
+      outputParameters:
+      - type: object
+        mapping: $.
