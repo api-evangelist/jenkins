@@ -1,0 +1,226 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Jenkins Remote Access API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Server",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get top-level Jenkins information (JSON)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{jenkinsHost}/api/json",
+            "params": [
+              {
+                "name": "tree",
+                "value": "",
+                "type": "query",
+                "description": "Filter the response shape by a tree expression."
+              },
+              {
+                "name": "depth",
+                "value": "",
+                "type": "query",
+                "description": "Depth of nested objects to include."
+              }
+            ]
+          },
+          "docs": "Get top-level Jenkins information (JSON)"
+        },
+        {
+          "info": {
+            "name": "Get top-level Jenkins information (XML)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{jenkinsHost}/api/xml",
+            "params": [
+              {
+                "name": "xpath",
+                "value": "",
+                "type": "query",
+                "description": "XPath expression to filter the XML response."
+              },
+              {
+                "name": "depth",
+                "value": "",
+                "type": "query",
+                "description": "Depth of nested objects to include."
+              }
+            ]
+          },
+          "docs": "Get top-level Jenkins information (XML)"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Jobs",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get information about a job (JSON)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{jenkinsHost}/job/:jobName/api/json",
+            "params": [
+              {
+                "name": "jobName",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "tree",
+                "value": "",
+                "type": "query",
+                "description": "Filter the response shape by a tree expression."
+              },
+              {
+                "name": "depth",
+                "value": "",
+                "type": "query",
+                "description": "Depth of nested objects to include."
+              }
+            ]
+          },
+          "docs": "Get information about a job (JSON)"
+        },
+        {
+          "info": {
+            "name": "Trigger a build for a parameterless job",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{jenkinsHost}/job/:jobName/build",
+            "params": [
+              {
+                "name": "jobName",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "token",
+                "value": "",
+                "type": "query",
+                "description": "Authentication token for remote build trigger."
+              }
+            ]
+          },
+          "docs": "Trigger a build for a parameterless job"
+        },
+        {
+          "info": {
+            "name": "Trigger a build with parameters",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{jenkinsHost}/job/:jobName/buildWithParameters",
+            "params": [
+              {
+                "name": "jobName",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "form-urlencoded",
+              "data": []
+            }
+          },
+          "docs": "Trigger a build with parameters"
+        },
+        {
+          "info": {
+            "name": "Get information about a specific build",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{jenkinsHost}/job/:jobName/:buildNumber/api/json",
+            "params": [
+              {
+                "name": "jobName",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "buildNumber",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "tree",
+                "value": "",
+                "type": "query",
+                "description": "Filter the response shape by a tree expression."
+              }
+            ]
+          },
+          "docs": "Get information about a specific build"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Queue",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get the current build queue",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{jenkinsHost}/queue/api/json"
+          },
+          "docs": "Get the current build queue"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Computer",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List connected agents",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{jenkinsHost}/computer/api/json"
+          },
+          "docs": "List connected agents"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
