@@ -1,0 +1,13 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/jenkins-openapi.yml
+summary:
+  types:
+  - http
+schemes:
+- name: basicAuth
+  type: http
+  scheme: basic
+  description: HTTP Basic auth using a Jenkins user and an API token.
+  sources:
+  - openapi/jenkins-openapi.yml

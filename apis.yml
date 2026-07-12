@@ -46,6 +46,12 @@ apis:
       - url: openapi/jenkins-openapi.yml
         type: OpenAPI
 common:
+  - type: VulnerabilityDisclosure
+    url: security/jenkins-vulnerability-disclosure.yml
+  - type: DomainSecurity
+    url: security/jenkins-domain-security.yml
+  - type: Authentication
+    url: authentication/jenkins-authentication.yml
   - type: LinkedIn
     url: https://www.linkedin.com/company/jenkinsio
   - type: Website
