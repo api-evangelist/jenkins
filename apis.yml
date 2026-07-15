@@ -46,6 +46,8 @@ apis:
       - url: openapi/jenkins-openapi.yml
         type: OpenAPI
 common:
+  - type: AgenticAccess
+    url: agentic-access/jenkins-agentic-access.yml
   - type: VulnerabilityDisclosure
     url: security/jenkins-vulnerability-disclosure.yml
   - type: DomainSecurity
