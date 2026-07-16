@@ -1,0 +1,32 @@
+generated: '2026-06-20'
+method: derived
+source: openapi/jenkins-openapi.yml
+standards:
+- id: oauth2
+  conforms: false
+  evidence: Remote Access API uses HTTP Basic auth with API tokens, not OAuth2.
+- id: oidc
+  conforms: false
+- id: rfc9457-problem-details
+  conforms: false
+  evidence: Errors are plain HTTP status codes; no application/problem+json.
+- id: json-api
+  conforms: false
+- id: odata
+  conforms: false
+- id: scim
+  conforms: false
+- id: pagination
+  conforms: false
+  evidence: Response shaping via tree/depth, not paginated collections.
+- id: idempotency
+  conforms: false
+  evidence: No Idempotency-Key support; GETs are naturally idempotent.
+- id: mcp
+  conforms: true
+  evidence: >-
+    Official MCP Server plugin (mcp-server) implements MCP spec 2025-06-18. See
+    mcp/jenkins-mcp.yml.
+- id: openapi-3.1
+  conforms: true
+  evidence: Repository ships an OpenAPI 3.1.0 description.

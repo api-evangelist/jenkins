@@ -1,0 +1,71 @@
+generated: '2026-06-20'
+method: searched
+source: https://www.jenkins.io/doc/book/managing/cli/
+name: Jenkins CLI
+description: >-
+  First-party command-line client distributed with every Jenkins instance,
+  exposing management and build operations over WebSocket, HTTP, or SSH.
+official: true
+install:
+- method: download
+  binary: jenkins-cli.jar
+  url: /jnlpJars/jenkins-cli.jar
+  note: Download from your own instance at <JENKINS_URL>/jnlpJars/jenkins-cli.jar
+  invoke: java -jar jenkins-cli.jar -s JENKINS_URL <command>
+- method: ssh
+  note: Native SSH transport using an uploaded SSH public key; no jar required.
+  invoke: ssh -l USER -p PORT JENKINS_HOST <command>
+transports:
+- name: websocket
+  default: true
+  since: '2.391'
+  flag: -webSocket
+- name: http
+  flag: -http
+- name: ssh
+  flag: -ssh
+authentication:
+- type: api-token
+  usage: -auth username:apitoken
+  env: [JENKINS_USER_ID, JENKINS_API_TOKEN, JENKINS_URL]
+- type: ssh-key
+  usage: -ssh -user username
+commands:
+  build_and_pipeline:
+  - build
+  - console
+  - replay-pipeline
+  - restart-from-stage
+  jobs:
+  - list-jobs
+  - get-job
+  - create-job
+  - update-job
+  - delete-job
+  - disable-job
+  - enable-job
+  - copy-job
+  system:
+  - safe-restart
+  - restart
+  - safe-shutdown
+  - reload-configuration
+  - quiet-down
+  - cancel-quiet-down
+  identity:
+  - who-am-i
+  - help
+  scripting:
+  - groovy
+  - groovysh
+  plugins:
+  - install-plugin
+  - list-plugins
+  nodes:
+  - connect-node
+  - disconnect-node
+  - offline-node
+  - online-node
+notes: >-
+  The exact command set is instance-dependent: plugins contribute additional CLI
+  commands, and `help` lists what the connected instance actually exposes.

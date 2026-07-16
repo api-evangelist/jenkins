@@ -1,0 +1,31 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for Jenkins Remote Access API
+  version: 1.0.0
+extends: openapi/jenkins-openapi.yml
+actions:
+- target: $.info
+  update:
+    x-apievangelist-slug: jenkins
+    x-apievangelist-category: [CI/CD, DevOps, Automation]
+    x-apievangelist-mcp: mcp/jenkins-mcp.yml
+    x-apievangelist-cli: cli/jenkins-cli.yml
+    x-apievangelist-authentication: authentication/jenkins-authentication.yml
+- target: $.components.securitySchemes.basicAuth
+  update:
+    x-api-token-docs: https://www.jenkins.io/doc/book/system-administration/authenticating-scripted-clients/
+    x-csrf: >-
+      State-changing requests require a Jenkins-Crumb CSRF token from
+      /crumbIssuer/api/json when the crumb issuer is enabled.
+- target: $.paths['/job/{jobName}/build'].post
+  update:
+    x-agentic-access:
+      action-class: acting
+      consequence: write
+      audit: required
+- target: $.paths['/job/{jobName}/buildWithParameters'].post
+  update:
+    x-agentic-access:
+      action-class: acting
+      consequence: write
+      audit: required

@@ -1,0 +1,37 @@
+generated: '2026-06-20'
+method: searched
+source: https://www.jenkins.io/solutions/python/
+notes: >-
+  Jenkins is a self-hosted automation server; the project does not ship an
+  official first-party REST client SDK. The jenkins-cli.jar client (official) is
+  distributed with each instance at /jnlpJars/jenkins-cli.jar and is catalogued
+  under cli/. The libraries below are the widely-used community client wrappers,
+  several of which are referenced from the Jenkins docs (solutions/python).
+packages:
+- language: python
+  registry: pypi
+  name: python-jenkins
+  url: https://pypi.org/project/python-jenkins/
+  install: pip install python-jenkins
+  docs: https://python-jenkins.readthedocs.io/
+  official: false
+- language: python
+  registry: pypi
+  name: jenkinsapi
+  url: https://pypi.org/project/jenkinsapi/
+  install: pip install jenkinsapi
+  source: https://github.com/pycontribs/jenkinsapi
+  official: false
+- language: python
+  registry: pypi
+  name: api4jenkins
+  url: https://pypi.org/project/api4jenkins/
+  install: pip install api4jenkins
+  source: https://github.com/joelee2012/api4jenkins
+  docs: https://api4jenkins.readthedocs.io/
+  official: false
+- language: java
+  registry: maven
+  name: com.offbytwo.jenkins:jenkins-client
+  url: https://central.sonatype.com/artifact/com.offbytwo.jenkins/jenkins-client
+  official: false

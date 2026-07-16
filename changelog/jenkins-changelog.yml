@@ -1,0 +1,25 @@
+generated: '2026-06-20'
+method: searched
+source: https://www.jenkins.io/changelog/
+scheme: semantic-major-minor
+current_version_line: '2.5xx (weekly)'
+lts_version_line: '2.541.x / 2.555.x (LTS)'
+changelogs:
+- line: weekly
+  url: https://www.jenkins.io/changelog/
+- line: LTS
+  url: https://www.jenkins.io/changelog-stable/
+- line: LTS (archived)
+  url: https://www.jenkins.io/changelog-stable-old/
+notes: >-
+  Jenkins publishes a per-release dated changelog for both the weekly and LTS
+  lines. Entries are release notes for core; plugin changelogs live on each
+  plugin's page at plugins.jenkins.io. Recent milestones observed in this repo's
+  blog feed:
+entries:
+- version: 2.543 / 2.541.1
+  date: '2025-12-23'
+  highlights: New Linux repository signing keys.
+- version: 2.562 / 2.555.2
+  date: '2026-04-29'
+  highlights: Releases signed by LF Open Source LLC.

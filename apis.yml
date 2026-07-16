@@ -18,7 +18,7 @@ tags:
   - Remote Access API
 url: https://raw.githubusercontent.com/api-evangelist/jenkins/refs/heads/main/apis.yml
 created: '2024-01-01'
-modified: '2026-05-19'
+modified: '2026-06-20'
 specificationVersion: '0.19'
 apis:
   - aid: jenkins:jenkins-remote-access-api
@@ -54,6 +54,30 @@ common:
     url: security/jenkins-domain-security.yml
   - type: Authentication
     url: authentication/jenkins-authentication.yml
+  - type: Packages
+    url: packages/jenkins-packages.yml
+  - type: WellKnown
+    url: well-known/jenkins-well-known.yml
+  - type: SecurityTxt
+    url: well-known/jenkins-security.txt
+  - type: MCPServer
+    url: mcp/jenkins-mcp.yml
+  - type: LLMsTxt
+    url: llms/jenkins-llms.txt
+  - type: Overlay
+    url: overlays/jenkins-openapi-overlay.yaml
+  - type: Conformance
+    url: conformance/jenkins-conformance.yml
+  - type: Lifecycle
+    url: lifecycle/jenkins-lifecycle.yml
+  - type: Conventions
+    url: conventions/jenkins-conventions.yml
+  - type: ChangeLog
+    url: changelog/jenkins-changelog.yml
+  - type: CLI
+    url: cli/jenkins-cli.yml
+  - type: DataModel
+    url: data-model/jenkins-data-model.yml
   - type: LinkedIn
     url: https://www.linkedin.com/company/jenkinsio
   - type: Website

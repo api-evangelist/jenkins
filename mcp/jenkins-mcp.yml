@@ -1,0 +1,60 @@
+generated: '2026-06-20'
+method: searched
+status: published
+source: https://plugins.jenkins.io/mcp-server
+server:
+  name: jenkins-mcp-server
+  plugin_id: mcp-server
+  license: MIT
+  requires: Jenkins 2.533 or higher
+  mcp_sdk: 0.17.2
+  mcp_spec: '2025-06-18'
+  transport: http
+  # Endpoints are relative to each self-hosted Jenkins instance URL.
+  endpoints:
+  - path: /mcp-server/mcp
+    transport: streamable-http
+    recommended: true
+  - path: /mcp-server/sse
+    transport: sse
+  - path: /mcp-server/message
+    transport: sse-message
+  - path: /mcp-server/stateless
+    transport: stateless-http
+tools:
+- name: getJob
+  description: Get information about a job.
+- name: getJobs
+  description: List jobs.
+- name: triggerBuild
+  description: Trigger a build, including parameterized builds.
+- name: getQueueItem
+  description: Get a build queue item.
+- name: getBuild
+  description: Get information about a build.
+- name: updateBuild
+  description: Update build metadata.
+- name: getBuildLog
+  description: Retrieve build console log.
+- name: searchBuildLog
+  description: Search within a build console log.
+- name: rebuildBuild
+  description: Rebuild a previous build.
+- name: getTestResults
+  description: Get test results for a build.
+- name: getReplayScripts
+  description: Get Pipeline replay scripts for a build.
+- name: replayBuild
+  description: Replay a Pipeline build.
+- name: getJobScm
+  description: Get SCM configuration for a job.
+- name: getBuildScm
+  description: Get SCM details for a build.
+- name: getBuildChangeSets
+  description: Get change sets associated with a build.
+- name: findJobsWithScmUrl
+  description: Find jobs that use a given SCM URL.
+- name: whoAmI
+  description: Return the current authenticated user and permissions.
+- name: getStatus
+  description: Get Jenkins server status.

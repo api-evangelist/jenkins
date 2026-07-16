@@ -1,0 +1,62 @@
+generated: '2026-06-20'
+method: derived
+source: openapi/jenkins-openapi.yml
+docs: https://www.jenkins.io/doc/book/using/remote-access-api/
+description: >-
+  Cross-cutting request/response conventions for the Jenkins Remote Access API,
+  derived from the OpenAPI and the Remote Access API documentation.
+access_pattern:
+  style: resource-suffix
+  note: >-
+    Append /api/json, /api/xml, or /api/python to any Jenkins resource URL
+    (top-level, /job/<name>, /job/<name>/<build>, /queue, /computer, /view) to
+    obtain a machine-readable representation of that resource.
+formats:
+- json    # /api/json (+ JSONP via jsonp callback)
+- xml     # /api/xml
+- python  # /api/python (Python literal eval)
+response_shaping:
+  tree:
+    param: tree
+    description: >-
+      Selectively include fields using a tree expression, e.g.
+      jobs[name,color]. Reduces payload and server load.
+  depth:
+    param: depth
+    description: Control how many levels of nested objects are inlined.
+  xpath:
+    param: xpath
+    applies_to: xml
+    description: Filter the XML response with an XPath expression.
+  wrapper:
+    param: wrapper
+    applies_to: xml
+    description: Wrap XPath results that return multiple nodes.
+authentication:
+  style: http-basic
+  credential: username + API token
+  see: authentication/jenkins-authentication.yml
+  crumb: >-
+    State-changing POST requests (e.g. triggering builds) require a CSRF crumb
+    (Jenkins-Crumb) obtained from /crumbIssuer/api/json when the crumb issuer is
+    enabled.
+pagination:
+  supported: false
+  note: >-
+    The API returns full resource trees shaped by tree/depth rather than
+    paginated collections.
+versioning:
+  header: X-Jenkins
+  note: The X-Jenkins response header advertises the running Jenkins version.
+  see: lifecycle/jenkins-lifecycle.yml
+errors:
+  style: http-status
+  note: >-
+    Errors are surfaced as HTTP status codes (401/403 for auth, 404 for missing
+    resources, 500 for server errors); there is no structured problem+json
+    envelope.
+rate_limiting:
+  signaling: none
+  note: >-
+    No provider-level rate-limit headers; throughput is bounded by the operator's
+    own instance. See rate-limits/jenkins-rate-limits.yml.

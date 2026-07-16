@@ -1,0 +1,19 @@
+generated: '2026-06-20'
+method: searched
+host: https://www.jenkins.io
+documents:
+- path: /.well-known/security.txt
+  status: 200
+  file: jenkins-security.txt
+- path: /.well-known/openid-configuration
+  status: 404
+- path: /.well-known/oauth-authorization-server
+  status: 404
+- path: /.well-known/api-catalog
+  status: 404
+- path: /.well-known/ai-plugin.json
+  status: 404
+notes: >-
+  The Jenkins Remote Access API is served from each self-hosted Jenkins instance,
+  not a central host, so OAuth/OIDC discovery documents live (if at all) on the
+  operator's own instance. Only the project website www.jenkins.io was probed.

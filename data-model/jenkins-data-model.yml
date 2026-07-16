@@ -1,0 +1,45 @@
+generated: '2026-06-20'
+method: derived
+source: openapi/jenkins-openapi.yml
+description: >-
+  Entity-relationship graph derived from the Jenkins Remote Access API resource
+  hierarchy (paths and tags). The OpenAPI models most payloads as a generic
+  additionalProperties Resource, so relationships are derived from the URL
+  structure rather than schema $refs.
+entities:
+- name: Jenkins
+  description: Top-level Jenkins instance.
+  endpoint: /api/json
+  relationships:
+  - has_many: Job
+    via: jobs
+  - has_one: Queue
+    via: queue
+  - has_many: Computer
+    via: computer
+  - has_many: View
+    via: views
+- name: Job
+  description: A configured project or pipeline.
+  endpoint: /job/{jobName}/api/json
+  relationships:
+  - belongs_to: Jenkins
+  - has_many: Build
+    via: builds
+- name: Build
+  description: A single run of a job.
+  endpoint: /job/{jobName}/{buildNumber}/api/json
+  relationships:
+  - belongs_to: Job
+    via: jobName
+- name: Queue
+  description: The pending build queue.
+  endpoint: /queue/api/json
+  relationships:
+  - has_many: QueueItem
+    via: items
+- name: Computer
+  description: A connected build agent/node.
+  endpoint: /computer/api/json
+  relationships:
+  - belongs_to: Jenkins

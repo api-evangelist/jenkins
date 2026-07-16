@@ -1,0 +1,36 @@
+generated: '2026-06-20'
+method: searched
+source: https://www.jenkins.io/doc/upgrade-guide/
+versioning:
+  scheme: semantic-major-minor
+  lines:
+  - name: weekly
+    cadence: weekly
+    description: Latest features and fixes; version like 2.5xx.
+    docs: https://www.jenkins.io/download/weekly/
+  - name: LTS
+    cadence: 12-week baseline, 3 patch releases on a ~4-week cycle
+    description: >-
+      Stable line; only backported, battle-tested cherry-picked bug fixes.
+      Version like 2.541.x.
+    docs: https://www.jenkins.io/download/lts/
+  changelog: https://www.jenkins.io/changelog/
+  changelog_stable: https://www.jenkins.io/changelog-stable/
+deprecation:
+  policy_url: https://www.jenkins.io/doc/upgrade-guide/
+  upgrade_guide: https://www.jenkins.io/doc/upgrade-guide/
+  notes: >-
+    Data is stored in a forward-compatible way: upgrades are supported but
+    downgrades to older releases are not. Each LTS upgrade-guide section covers
+    breaking changes from the previous LTS line.
+  sunset_header: false
+security:
+  advisories: https://www.jenkins.io/security/advisories/
+  reporting: https://www.jenkins.io/security/reporting/
+api_stability: >-
+  The Remote Access API surface (append /api/ to any resource) has been stable
+  for years; it is not independently versioned. The X-Jenkins response header
+  advertises the running Jenkins core version.
+status_page: null
+sla: null
+deprecated_operations: []

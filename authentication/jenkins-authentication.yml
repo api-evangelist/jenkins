@@ -1,13 +1,28 @@
-generated: '2026-07-11'
-method: derived
+generated: '2026-06-20'
+method: searched
 source: openapi/jenkins-openapi.yml
+docs: https://www.jenkins.io/doc/book/system-administration/authenticating-scripted-clients/
 summary:
   types:
   - http
+  http_schemes:
+  - basic
+  credential: username + API token
 schemes:
 - name: basicAuth
   type: http
   scheme: basic
-  description: HTTP Basic auth using a Jenkins user and an API token.
+  description: >-
+    HTTP Basic auth using a Jenkins username and an API token (not the account
+    password). API tokens are generated per-user under the user's Security
+    configuration and can be revoked independently.
   sources:
   - openapi/jenkins-openapi.yml
+csrf:
+  required_for: state-changing POST requests (e.g. triggering builds)
+  mechanism: Jenkins-Crumb CSRF token
+  crumb_endpoint: /crumbIssuer/api/json
+notes: >-
+  SSH public-key auth is also supported for the Jenkins CLI. See
+  cli/jenkins-cli.yml. Some deployments front Jenkins with a reverse-proxy or
+  SSO, but the native scripted-client mechanism is Basic auth with an API token.
