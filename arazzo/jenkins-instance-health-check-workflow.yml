@@ -1,0 +1,83 @@
+arazzo: 1.0.1
+info:
+  title: Jenkins Instance Health and Capacity Check
+  summary: Read instance mode and executor count, check agents are online, and measure queue depth.
+  description: >-
+    The monitoring flow an operator or a scheduled check runs against a Jenkins
+    controller. The workflow reads the top-level instance resource for its mode,
+    quieting-down state, and executor count, lists the connected agents to see
+    how many are offline or temporarily offline, and then reads the build queue
+    to measure how much work is waiting. Together these three reads answer
+    whether the instance can currently accept and run builds. Every step spells
+    out its request inline so the flow can be read and executed without opening
+    the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: jenkinsApi
+  url: ../openapi/jenkins-openapi.yml
+  type: openapi
+workflows:
+- workflowId: instance-health-check
+  summary: Check that a Jenkins controller is accepting work and has executor capacity.
+  description: >-
+    Reads the controller's mode and executor count, inspects the connected
+    agents for offline state, and reads the queue depth. A controller that is
+    quieting down, has every agent offline, or has a deep queue cannot be
+    relied on to run a build promptly.
+  inputs:
+    type: object
+    properties:
+      depth:
+        type: integer
+        description: >-
+          Optional depth for expanding nested objects in the agent listing.
+          Defaults are usually sufficient; raise only when more detail is needed.
+  steps:
+  - stepId: readInstance
+    description: >-
+      Read the top-level Jenkins resource for its mode, whether it is quieting
+      down ahead of a restart, and how many executors it advertises.
+    operationId: getJenkinsInfo
+    parameters:
+    - name: tree
+      in: query
+      value: mode,nodeName,nodeDescription,numExecutors,quietingDown,useSecurity
+    successCriteria:
+    - condition: $statusCode == 200
+    - context: $response.body
+      condition: $.quietingDown == false
+      type: jsonpath
+    outputs:
+      mode: $response.body#/mode
+      numExecutors: $response.body#/numExecutors
+      quietingDown: $response.body#/quietingDown
+  - stepId: checkAgents
+    description: >-
+      List the connected build agents and their offline state, so a controller
+      with no usable executors is caught before builds are queued against it.
+    operationId: listComputers
+    parameters:
+    - name: depth
+      in: query
+      value: $inputs.depth
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      computers: $response.body#/computer
+      busyExecutors: $response.body#/busyExecutors
+      totalExecutors: $response.body#/totalExecutors
+  - stepId: measureQueue
+    description: >-
+      Read the build queue to measure how many items are waiting and why, which
+      distinguishes a saturated instance from a blocked one.
+    operationId: getQueue
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      queueItems: $response.body#/items
+  outputs:
+    mode: $steps.readInstance.outputs.mode
+    quietingDown: $steps.readInstance.outputs.quietingDown
+    busyExecutors: $steps.checkAgents.outputs.busyExecutors
+    totalExecutors: $steps.checkAgents.outputs.totalExecutors
+    queueItems: $steps.measureQueue.outputs.queueItems

@@ -46,6 +46,18 @@ apis:
       - url: openapi/jenkins-openapi.yml
         type: OpenAPI
 common:
+  - type: Arazzo
+    url: arazzo/jenkins-trigger-build-and-await-result-workflow.yml
+    name: Jenkins Trigger a Build and Await the Result
+  - type: Arazzo
+    url: arazzo/jenkins-trigger-parameterized-build-workflow.yml
+    name: Jenkins Trigger a Parameterized Build and Await the Result
+  - type: Arazzo
+    url: arazzo/jenkins-inspect-job-latest-build-workflow.yml
+    name: Jenkins Discover Jobs and Inspect the Latest Build
+  - type: Arazzo
+    url: arazzo/jenkins-instance-health-check-workflow.yml
+    name: Jenkins Instance Health and Capacity Check
   - type: AgenticAccess
     url: agentic-access/jenkins-agentic-access.yml
   - type: VulnerabilityDisclosure

@@ -1,0 +1,120 @@
+arazzo: 1.0.1
+info:
+  title: Jenkins Trigger a Parameterized Build and Await the Result
+  summary: Submit build parameters to a parameterized job, confirm it queued, and poll until it finishes.
+  description: >-
+    Parameterized Jenkins jobs reject the plain /build endpoint and must be
+    triggered through /buildWithParameters with the parameter values submitted
+    as a form-encoded body. This workflow resolves the job to confirm it is
+    buildable and to capture the number the next build will receive, submits the
+    parameters, inspects the queue, and then polls the build until it completes.
+    Every step spells out its request inline so the flow can be read and executed
+    without opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: jenkinsApi
+  url: ../openapi/jenkins-openapi.yml
+  type: openapi
+workflows:
+- workflowId: trigger-parameterized-build
+  summary: Run a parameterized Jenkins job with supplied values and wait for the result.
+  description: >-
+    Reads the job, posts the supplied parameters to the buildWithParameters
+    endpoint, confirms the queue accepted the request, and polls the build until
+    building is false. The parameter names supplied must match the parameter
+    definitions configured on the job.
+  inputs:
+    type: object
+    required:
+    - jobName
+    - parameters
+    properties:
+      jobName:
+        type: string
+        description: The name of the parameterized Jenkins job to build.
+      parameters:
+        type: object
+        description: >-
+          Map of build parameter name/value pairs to submit, matching the job's
+          configured parameter definitions (e.g. {"BRANCH": "main"}).
+  steps:
+  - stepId: resolveJob
+    description: >-
+      Read the job to confirm it exists and is buildable, and to capture the
+      number the next build will be assigned.
+    operationId: getJob
+    parameters:
+    - name: jobName
+      in: path
+      value: $inputs.jobName
+    - name: tree
+      in: query
+      value: name,buildable,inQueue,nextBuildNumber
+    successCriteria:
+    - condition: $statusCode == 200
+    - context: $response.body
+      condition: $.buildable == true
+      type: jsonpath
+    outputs:
+      nextBuildNumber: $response.body#/nextBuildNumber
+  - stepId: submitParameters
+    description: >-
+      Trigger the job with the supplied parameter values, form-encoded as
+      Jenkins expects. Jenkins responds 201 with a Location header pointing at
+      the created queue item.
+    operationId: triggerBuildWithParameters
+    parameters:
+    - name: jobName
+      in: path
+      value: $inputs.jobName
+    requestBody:
+      contentType: application/x-www-form-urlencoded
+      payload: $inputs.parameters
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      queueItemUrl: $response.header.Location
+  - stepId: inspectQueue
+    description: >-
+      Read the build queue to confirm the parameterized trigger was accepted and
+      to see whether the build is still waiting for an executor.
+    operationId: getQueue
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      queueItems: $response.body#/items
+  - stepId: awaitBuild
+    description: >-
+      Poll the build resource until it reports it is no longer building, then
+      capture the final result and the parameters the build actually ran with.
+    operationId: getBuild
+    parameters:
+    - name: jobName
+      in: path
+      value: $inputs.jobName
+    - name: buildNumber
+      in: path
+      value: $steps.resolveJob.outputs.nextBuildNumber
+    - name: tree
+      in: query
+      value: number,building,result,duration,url,actions[parameters[name,value]]
+    successCriteria:
+    - condition: $statusCode == 200
+    - context: $response.body
+      condition: $.building == false
+      type: jsonpath
+    onFailure:
+    - name: waitForBuildToFinish
+      type: retry
+      retryAfter: 10
+      retryLimit: 60
+    outputs:
+      buildNumber: $response.body#/number
+      result: $response.body#/result
+      duration: $response.body#/duration
+      buildUrl: $response.body#/url
+  outputs:
+    buildNumber: $steps.awaitBuild.outputs.buildNumber
+    result: $steps.awaitBuild.outputs.result
+    buildUrl: $steps.awaitBuild.outputs.buildUrl
+    queueItemUrl: $steps.submitParameters.outputs.queueItemUrl

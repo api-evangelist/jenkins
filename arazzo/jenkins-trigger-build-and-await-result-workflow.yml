@@ -1,0 +1,121 @@
+arazzo: 1.0.1
+info:
+  title: Jenkins Trigger a Build and Await the Result
+  summary: Trigger a parameterless job, watch it leave the queue, and poll the build until it finishes.
+  description: >-
+    The canonical Jenkins Remote Access API integration. The workflow resolves
+    the job to confirm it exists and is buildable and to capture the number the
+    next build will receive, posts the build trigger, inspects the queue to
+    confirm the request was accepted, and then polls the build resource until it
+    is no longer building before reporting the final result. Every step spells
+    out its request inline so the flow can be read and executed without opening
+    the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: jenkinsApi
+  url: ../openapi/jenkins-openapi.yml
+  type: openapi
+workflows:
+- workflowId: trigger-build-and-await-result
+  summary: Trigger a Jenkins job and block until the resulting build completes.
+  description: >-
+    Reads the job to capture nextBuildNumber, triggers the build, confirms the
+    queue accepted it, and polls the build until building is false. Note that
+    nextBuildNumber is the number this build receives provided no other client
+    triggers the same job concurrently; on busy shared jobs, follow the queue
+    item URL returned in the trigger Location header instead.
+  inputs:
+    type: object
+    required:
+    - jobName
+    properties:
+      jobName:
+        type: string
+        description: The name of the Jenkins job to build (e.g. "my-pipeline").
+      token:
+        type: string
+        description: >-
+          Optional remote build trigger token configured on the job, required
+          when the job is set up for authenticated remote triggering.
+  steps:
+  - stepId: resolveJob
+    description: >-
+      Read the job to confirm it exists, that it is buildable, and to capture
+      the number the next build will be assigned.
+    operationId: getJob
+    parameters:
+    - name: jobName
+      in: path
+      value: $inputs.jobName
+    - name: tree
+      in: query
+      value: name,buildable,inQueue,nextBuildNumber
+    successCriteria:
+    - condition: $statusCode == 200
+    - context: $response.body
+      condition: $.buildable == true
+      type: jsonpath
+    outputs:
+      nextBuildNumber: $response.body#/nextBuildNumber
+      buildable: $response.body#/buildable
+  - stepId: triggerBuild
+    description: >-
+      Post the build trigger for the parameterless job. Jenkins responds 201
+      with a Location header pointing at the newly created queue item.
+    operationId: triggerBuild
+    parameters:
+    - name: jobName
+      in: path
+      value: $inputs.jobName
+    - name: token
+      in: query
+      value: $inputs.token
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      queueItemUrl: $response.header.Location
+  - stepId: inspectQueue
+    description: >-
+      Read the build queue to confirm the trigger was accepted and to see
+      whether the build is still waiting for an executor.
+    operationId: getQueue
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      queueItems: $response.body#/items
+  - stepId: awaitBuild
+    description: >-
+      Poll the build resource until Jenkins reports it is no longer building,
+      then capture the final result. Retries allow time for the build to leave
+      the queue, start on an executor, and run to completion.
+    operationId: getBuild
+    parameters:
+    - name: jobName
+      in: path
+      value: $inputs.jobName
+    - name: buildNumber
+      in: path
+      value: $steps.resolveJob.outputs.nextBuildNumber
+    - name: tree
+      in: query
+      value: number,building,result,duration,timestamp,url
+    successCriteria:
+    - condition: $statusCode == 200
+    - context: $response.body
+      condition: $.building == false
+      type: jsonpath
+    onFailure:
+    - name: waitForBuildToFinish
+      type: retry
+      retryAfter: 10
+      retryLimit: 60
+    outputs:
+      buildNumber: $response.body#/number
+      result: $response.body#/result
+      duration: $response.body#/duration
+      buildUrl: $response.body#/url
+  outputs:
+    buildNumber: $steps.awaitBuild.outputs.buildNumber
+    result: $steps.awaitBuild.outputs.result
+    buildUrl: $steps.awaitBuild.outputs.buildUrl
+    queueItemUrl: $steps.triggerBuild.outputs.queueItemUrl

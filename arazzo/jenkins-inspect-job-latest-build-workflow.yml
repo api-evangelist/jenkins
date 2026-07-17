@@ -1,0 +1,94 @@
+arazzo: 1.0.1
+info:
+  title: Jenkins Discover Jobs and Inspect the Latest Build
+  summary: Enumerate the jobs on an instance, drill into one job, and read the detail of its most recent build.
+  description: >-
+    The read-only bootstrap flow for any Jenkins integration. The workflow lists
+    the jobs the authenticated user can see on the instance, reads the target
+    job to find the number of its most recent build, and then fetches that
+    build's detail to report status, result, and duration without triggering
+    anything. Each step uses a tree expression to keep the response shape small,
+    which matters on instances with many jobs. Every step spells out its request
+    inline so the flow can be read and executed without opening the underlying
+    OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: jenkinsApi
+  url: ../openapi/jenkins-openapi.yml
+  type: openapi
+workflows:
+- workflowId: inspect-job-latest-build
+  summary: Enumerate an instance's jobs and report the status of one job's last build.
+  description: >-
+    Lists the instance's jobs, reads the named job to resolve its lastBuild
+    number, and fetches that build's detail. This is the flow a dashboard or
+    status check runs on a schedule.
+  inputs:
+    type: object
+    required:
+    - jobName
+    properties:
+      jobName:
+        type: string
+        description: The name of the job whose latest build should be inspected.
+  steps:
+  - stepId: listJobs
+    description: >-
+      List the jobs visible on the instance with their name, url, and status
+      colour, so the caller can confirm the target job is present.
+    operationId: getJenkinsInfo
+    parameters:
+    - name: tree
+      in: query
+      value: jobs[name,url,color]
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      jobs: $response.body#/jobs
+  - stepId: resolveJob
+    description: >-
+      Read the target job to capture the number of its most recent build along
+      with the last successful and last failed build numbers for comparison.
+    operationId: getJob
+    parameters:
+    - name: jobName
+      in: path
+      value: $inputs.jobName
+    - name: tree
+      in: query
+      value: name,url,buildable,inQueue,lastBuild[number],lastSuccessfulBuild[number],lastFailedBuild[number],healthReport[score,description]
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      lastBuildNumber: $response.body#/lastBuild/number
+      lastSuccessfulBuildNumber: $response.body#/lastSuccessfulBuild/number
+      healthReport: $response.body#/healthReport
+  - stepId: readLatestBuild
+    description: >-
+      Fetch the detail of the job's most recent build, reporting whether it is
+      still running, what it resulted in, and how long it took.
+    operationId: getBuild
+    parameters:
+    - name: jobName
+      in: path
+      value: $inputs.jobName
+    - name: buildNumber
+      in: path
+      value: $steps.resolveJob.outputs.lastBuildNumber
+    - name: tree
+      in: query
+      value: number,building,result,duration,timestamp,url,description
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      buildNumber: $response.body#/number
+      building: $response.body#/building
+      result: $response.body#/result
+      duration: $response.body#/duration
+      buildUrl: $response.body#/url
+  outputs:
+    jobs: $steps.listJobs.outputs.jobs
+    lastBuildNumber: $steps.readLatestBuild.outputs.buildNumber
+    result: $steps.readLatestBuild.outputs.result
+    building: $steps.readLatestBuild.outputs.building
+    healthReport: $steps.resolveJob.outputs.healthReport
