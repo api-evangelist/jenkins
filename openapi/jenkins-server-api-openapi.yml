@@ -1,0 +1,90 @@
+openapi: 3.1.0
+info:
+  title: Jenkins Remote Access Computer Server API
+  description: Jenkins exposes a machine-consumable Remote Access API for nearly every resource it manages. The API is accessed by appending /api/ to any Jenkins resource URL (top-level Jenkins, jobs, builds, queue, computers, views). The API supports XML (with XPath filtering), JSON (with JSONP), and a Python-compatible variant. HTTP Basic authentication with API tokens is used for authenticated requests, and the X-Jenkins response header advertises the Jenkins version.
+  version: 1.0.0
+  contact:
+    name: Jenkins Project
+    url: https://www.jenkins.io/
+  license:
+    name: MIT
+    url: https://www.jenkins.io/license/
+  x-generated-from: https://www.jenkins.io/doc/book/using/remote-access-api/
+  x-generated-by: claude-crawl-2026-05-08
+servers:
+- url: https://{jenkinsHost}
+  description: Self-hosted Jenkins instance
+  variables:
+    jenkinsHost:
+      default: jenkins.example.com
+      description: Hostname (and optional port) of your Jenkins instance.
+security:
+- basicAuth: []
+tags:
+- name: Server
+  description: Information about the Jenkins instance.
+paths:
+  /api/json:
+    get:
+      tags:
+      - Server
+      operationId: getJenkinsInfo
+      summary: Get top-level Jenkins information (JSON)
+      parameters:
+      - $ref: '#/components/parameters/Tree'
+      - $ref: '#/components/parameters/Depth'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Resource'
+  /api/xml:
+    get:
+      tags:
+      - Server
+      operationId: getJenkinsInfoXml
+      summary: Get top-level Jenkins information (XML)
+      parameters:
+      - $ref: '#/components/parameters/Xpath'
+      - $ref: '#/components/parameters/Depth'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/xml:
+              schema:
+                type: string
+components:
+  parameters:
+    Tree:
+      name: tree
+      in: query
+      required: false
+      schema:
+        type: string
+      description: Filter the response shape by a tree expression.
+    Depth:
+      name: depth
+      in: query
+      required: false
+      schema:
+        type: integer
+      description: Depth of nested objects to include.
+    Xpath:
+      name: xpath
+      in: query
+      required: false
+      schema:
+        type: string
+      description: XPath expression to filter the XML response.
+  schemas:
+    Resource:
+      type: object
+      additionalProperties: true
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+      description: HTTP Basic auth using a Jenkins user and an API token.
