@@ -6,7 +6,20 @@ description: >-
   XML (with XPath filtering), JSON (with JSONP), and a Python-compatible variant, and supports HTTP Basic auth with API
   tokens for scripted clients.
 type: Index
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: freemium
+  onboarding: self-serve
+  trial: false
+  try_now: true
+  public: false
+  label: Freemium · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/jenkins.png
 tags:
   - Automation
   - Build Server
@@ -21,30 +34,66 @@ created: '2024-01-01'
 modified: '2026-06-20'
 specificationVersion: '0.19'
 apis:
-  - aid: jenkins:jenkins-remote-access-api
-    name: Jenkins Remote Access API
-    description: >-
-      Jenkins provides a machine-consumable Remote Access API to nearly every resource it exposes. The API is reached by
-      appending /api/ to any Jenkins resource URL (top-level, jobs, builds, queue, nodes, views, etc.), is available in
-      XML, JSON (JSONP), and Python variants, and supports authenticated requests via HTTP Basic auth with API tokens.
-      Common operations include triggering builds, retrieving job and build information, and inspecting build queues,
-      with depth and tree query parameters for controlling response shape.
-    humanURL: https://www.jenkins.io/doc/book/using/remote-access-api/
-    tags:
-      - JSON
-      - Python
-      - Remote Access
-      - REST API
-      - XML
-    properties:
-      - type: Documentation
-        url: https://www.jenkins.io/doc/book/using/remote-access-api/
-      - type: Authentication
-        url: https://www.jenkins.io/doc/book/system-administration/authenticating-scripted-clients/
-      - type: APITokens
-        url: https://www.jenkins.io/doc/book/managing/system-configuration/#configuring-api-tokens
-      - url: openapi/jenkins-openapi.yml
-        type: OpenAPI
+- aid: jenkins:jenkins-computer-api
+  name: Jenkins Computer API
+  description: Connected build agents.
+  humanURL: https://www.jenkins.io/doc/book/using/remote-access-api/
+  tags:
+  - Computer
+  properties:
+  - type: OpenAPI
+    url: openapi/jenkins-computer-api-openapi.yml
+  - type: Documentation
+    url: https://www.jenkins.io/doc/book/using/remote-access-api/
+  - type: Authentication
+    url: https://www.jenkins.io/doc/book/system-administration/authenticating-scripted-clients/
+  - type: APITokens
+    url: https://www.jenkins.io/doc/book/managing/system-configuration/#configuring-api-tokens
+- aid: jenkins:jenkins-jobs-api
+  name: Jenkins Jobs API
+  description: Jenkins jobs and their builds.
+  humanURL: https://www.jenkins.io/doc/book/using/remote-access-api/
+  tags:
+  - Jobs
+  properties:
+  - type: OpenAPI
+    url: openapi/jenkins-jobs-api-openapi.yml
+  - type: Documentation
+    url: https://www.jenkins.io/doc/book/using/remote-access-api/
+  - type: Authentication
+    url: https://www.jenkins.io/doc/book/system-administration/authenticating-scripted-clients/
+  - type: APITokens
+    url: https://www.jenkins.io/doc/book/managing/system-configuration/#configuring-api-tokens
+- aid: jenkins:jenkins-queue-api
+  name: Jenkins Queue API
+  description: The build queue.
+  humanURL: https://www.jenkins.io/doc/book/using/remote-access-api/
+  tags:
+  - Queue
+  properties:
+  - type: OpenAPI
+    url: openapi/jenkins-queue-api-openapi.yml
+  - type: Documentation
+    url: https://www.jenkins.io/doc/book/using/remote-access-api/
+  - type: Authentication
+    url: https://www.jenkins.io/doc/book/system-administration/authenticating-scripted-clients/
+  - type: APITokens
+    url: https://www.jenkins.io/doc/book/managing/system-configuration/#configuring-api-tokens
+- aid: jenkins:jenkins-server-api
+  name: Jenkins Server API
+  description: Information about the Jenkins instance.
+  humanURL: https://www.jenkins.io/doc/book/using/remote-access-api/
+  tags:
+  - Server
+  properties:
+  - type: OpenAPI
+    url: openapi/jenkins-server-api-openapi.yml
+  - type: Documentation
+    url: https://www.jenkins.io/doc/book/using/remote-access-api/
+  - type: Authentication
+    url: https://www.jenkins.io/doc/book/system-administration/authenticating-scripted-clients/
+  - type: APITokens
+    url: https://www.jenkins.io/doc/book/managing/system-configuration/#configuring-api-tokens
 common:
   - type: Arazzo
     url: arazzo/jenkins-trigger-build-and-await-result-workflow.yml
