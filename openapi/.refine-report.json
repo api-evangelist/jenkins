@@ -1,0 +1,20 @@
+{
+  "provider": "jenkins",
+  "sources": [
+    "jenkins-computer-api-openapi.yml",
+    "jenkins-jobs-api-openapi.yml",
+    "jenkins-queue-api-openapi.yml",
+    "jenkins-server-api-openapi.yml"
+  ],
+  "outputs": [
+    "jenkins-computer-api-openapi.yml",
+    "jenkins-jobs-api-openapi.yml",
+    "jenkins-queue-api-openapi.yml",
+    "jenkins-server-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
