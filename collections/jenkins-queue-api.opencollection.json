@@ -1,0 +1,36 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Jenkins Remote Access Computer Queue API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Queue",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get the current build queue",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{jenkinsHost}/queue/api/json"
+          },
+          "docs": "Get the current build queue"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

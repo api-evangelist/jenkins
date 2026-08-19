@@ -1,0 +1,280 @@
+{
+  "item": [
+    {
+      "id": "f4c5ad39-d506-4fb2-8bfb-316d28f8bd3d",
+      "name": "Server",
+      "description": {
+        "content": "Information about the Jenkins instance.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "fe628339-4c34-42dc-8f3e-67b7c4fea327",
+          "name": "Get top-level Jenkins information (JSON)",
+          "request": {
+            "name": "Get top-level Jenkins information (JSON)",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "tree",
+                  "value": "<string>",
+                  "description": "Filter the response shape by a tree expression."
+                },
+                {
+                  "disabled": false,
+                  "key": "depth",
+                  "value": "<integer>",
+                  "description": "Depth of nested objects to include."
+                }
+              ],
+              "variable": [
+                {
+                  "description": "Hostname (and optional port) of your Jenkins instance.",
+                  "type": "any",
+                  "value": "{{jenkinsHost}}",
+                  "key": "jenkinsHost"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e54bd5c0-e989-450d-b6ed-3ff334be0311",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "tree",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "depth",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Hostname (and optional port) of your Jenkins instance.",
+                      "type": "any",
+                      "value": "{{jenkinsHost}}",
+                      "key": "jenkinsHost"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"key_0\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "cf67d6d1-1aa5-4c15-97ac-51994f5d24fa",
+          "name": "Get top-level Jenkins information (XML)",
+          "request": {
+            "name": "Get top-level Jenkins information (XML)",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "xml"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "xpath",
+                  "value": "<string>",
+                  "description": "XPath expression to filter the XML response."
+                },
+                {
+                  "disabled": false,
+                  "key": "depth",
+                  "value": "<integer>",
+                  "description": "Depth of nested objects to include."
+                }
+              ],
+              "variable": [
+                {
+                  "description": "Hostname (and optional port) of your Jenkins instance.",
+                  "type": "any",
+                  "value": "{{jenkinsHost}}",
+                  "key": "jenkinsHost"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/xml"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "cf37a796-ae6b-4ccc-94e5-0f3d92db140e",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "xml"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "xpath",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "depth",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Hostname (and optional port) of your Jenkins instance.",
+                      "type": "any",
+                      "value": "{{jenkinsHost}}",
+                      "key": "jenkinsHost"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/xml"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/xml"
+                }
+              ],
+              "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>(string)</element>",
+              "cookie": [],
+              "_postman_previewlanguage": "xml"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "Hostname (and optional port) of your Jenkins instance.",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "jenkins.example.com",
+      "key": "jenkinsHost"
+    },
+    {
+      "type": "string",
+      "value": "https://{{jenkinsHost}}",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "f99c8930-bca8-4e5e-8295-e2a82575615b",
+    "name": "Jenkins Remote Access Computer Server API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Jenkins exposes a machine-consumable Remote Access API for nearly every resource it manages. The API is accessed by appending /api/ to any Jenkins resource URL (top-level Jenkins, jobs, builds, queue, computers, views). The API supports XML (with XPath filtering), JSON (with JSONP), and a Python-compatible variant. HTTP Basic authentication with API tokens is used for authenticated requests, and the X-Jenkins response header advertises the Jenkins version.\n\nContact Support:\n Name: Jenkins Project",
+      "type": "text/plain"
+    }
+  }
+}

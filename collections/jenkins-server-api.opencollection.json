@@ -1,0 +1,75 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Jenkins Remote Access Computer Server API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Server",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get top-level Jenkins information (JSON)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{jenkinsHost}/api/json",
+            "params": [
+              {
+                "name": "tree",
+                "value": "",
+                "type": "query",
+                "description": "Filter the response shape by a tree expression."
+              },
+              {
+                "name": "depth",
+                "value": "",
+                "type": "query",
+                "description": "Depth of nested objects to include."
+              }
+            ]
+          },
+          "docs": "Get top-level Jenkins information (JSON)"
+        },
+        {
+          "info": {
+            "name": "Get top-level Jenkins information (XML)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{jenkinsHost}/api/xml",
+            "params": [
+              {
+                "name": "xpath",
+                "value": "",
+                "type": "query",
+                "description": "XPath expression to filter the XML response."
+              },
+              {
+                "name": "depth",
+                "value": "",
+                "type": "query",
+                "description": "Depth of nested objects to include."
+              }
+            ]
+          },
+          "docs": "Get top-level Jenkins information (XML)"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

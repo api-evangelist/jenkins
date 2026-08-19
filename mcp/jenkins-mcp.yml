@@ -10,7 +10,6 @@ server:
   mcp_sdk: 0.17.2
   mcp_spec: '2025-06-18'
   transport: http
-  # Endpoints are relative to each self-hosted Jenkins instance URL.
   endpoints:
   - path: /mcp-server/mcp
     transport: streamable-http
@@ -58,3 +57,9 @@ tools:
   description: Return the current authenticated user and permissions.
 - name: getStatus
   description: Get Jenkins server status.
+deployment:
+  mode: remote
+  verified: searched
+  tools: 18
+  checked: '2026-08-12'
+  source: catalog MCP census

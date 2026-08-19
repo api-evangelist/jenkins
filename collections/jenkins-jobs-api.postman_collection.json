@@ -1,0 +1,717 @@
+{
+  "item": [
+    {
+      "id": "17d8d476-9e35-4b60-8c85-1fdd80036252",
+      "name": "Jobs",
+      "description": {
+        "content": "Jenkins jobs and their builds.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "5fcfa243-d480-4a3f-89fc-f2eb586a7454",
+          "name": "Get information about a job (JSON)",
+          "request": {
+            "name": "Get information about a job (JSON)",
+            "description": {},
+            "url": {
+              "path": [
+                "job",
+                ":jobName",
+                "api",
+                "json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "tree",
+                  "value": "<string>",
+                  "description": "Filter the response shape by a tree expression."
+                },
+                {
+                  "disabled": false,
+                  "key": "depth",
+                  "value": "<integer>",
+                  "description": "Depth of nested objects to include."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "jobName",
+                  "description": "(Required) "
+                },
+                {
+                  "description": "Hostname (and optional port) of your Jenkins instance.",
+                  "type": "any",
+                  "value": "{{jenkinsHost}}",
+                  "key": "jenkinsHost"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9457242c-b4b3-4c57-b1f2-acb8d0e786e9",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "job",
+                    ":jobName",
+                    "api",
+                    "json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "tree",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "depth",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "jobName",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": "Hostname (and optional port) of your Jenkins instance.",
+                      "type": "any",
+                      "value": "{{jenkinsHost}}",
+                      "key": "jenkinsHost"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"key_0\": 3923.3019782269553,\n  \"key_1\": 3107.8832009258963,\n  \"key_2\": 6120.723740080038,\n  \"key_3\": 5530\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0f44f559-924b-4888-8edb-61eafee6d860",
+          "name": "Trigger a build for a parameterless job",
+          "request": {
+            "name": "Trigger a build for a parameterless job",
+            "description": {},
+            "url": {
+              "path": [
+                "job",
+                ":jobName",
+                "build"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "token",
+                  "value": "<string>",
+                  "description": "Authentication token for remote build trigger."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "jobName",
+                  "description": "(Required) "
+                },
+                {
+                  "description": "Hostname (and optional port) of your Jenkins instance.",
+                  "type": "any",
+                  "value": "{{jenkinsHost}}",
+                  "key": "jenkinsHost"
+                }
+              ]
+            },
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "fd6921c3-f02e-4784-9f09-c8f5daac76d8",
+              "name": "Accepted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "job",
+                    ":jobName",
+                    "build"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "jobName",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": "Hostname (and optional port) of your Jenkins instance.",
+                      "type": "any",
+                      "value": "{{jenkinsHost}}",
+                      "key": "jenkinsHost"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "8b52754f-8e6a-4a4f-bcaa-d7add05f00ab",
+              "name": "Build queued",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "job",
+                    ":jobName",
+                    "build"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "jobName",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": "Hostname (and optional port) of your Jenkins instance.",
+                      "type": "any",
+                      "value": "{{jenkinsHost}}",
+                      "key": "jenkinsHost"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "01d5d687-8cf5-4a4d-9509-83ab9594114a",
+          "name": "Trigger a build with parameters",
+          "request": {
+            "name": "Trigger a build with parameters",
+            "description": {},
+            "url": {
+              "path": [
+                "job",
+                ":jobName",
+                "buildWithParameters"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "jobName",
+                  "description": "(Required) "
+                },
+                {
+                  "description": "Hostname (and optional port) of your Jenkins instance.",
+                  "type": "any",
+                  "value": "{{jenkinsHost}}",
+                  "key": "jenkinsHost"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "key_0",
+                  "value": "3492"
+                },
+                {
+                  "disabled": false,
+                  "key": "key_1",
+                  "value": "true"
+                },
+                {
+                  "disabled": false,
+                  "key": "key_2",
+                  "value": "1984.439367476516"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "ce3d7c8e-8f84-4876-a83e-3eab4a2de05c",
+              "name": "Accepted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "job",
+                    ":jobName",
+                    "buildWithParameters"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "jobName",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": "Hostname (and optional port) of your Jenkins instance.",
+                      "type": "any",
+                      "value": "{{jenkinsHost}}",
+                      "key": "jenkinsHost"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "key": "key_0",
+                      "value": "3923.3019782269553"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "key_1",
+                      "value": "3107.8832009258963"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "key_2",
+                      "value": "6120.723740080038"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "key_3",
+                      "value": "5530"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "74780308-c4f5-446b-9415-67f0437300dc",
+              "name": "Build queued",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "job",
+                    ":jobName",
+                    "buildWithParameters"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "jobName",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": "Hostname (and optional port) of your Jenkins instance.",
+                      "type": "any",
+                      "value": "{{jenkinsHost}}",
+                      "key": "jenkinsHost"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "key": "key_0",
+                      "value": "3923.3019782269553"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "key_1",
+                      "value": "3107.8832009258963"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "key_2",
+                      "value": "6120.723740080038"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "key_3",
+                      "value": "5530"
+                    }
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2757a27a-a4f0-423e-a10b-d339ce01b33a",
+          "name": "Get information about a specific build",
+          "request": {
+            "name": "Get information about a specific build",
+            "description": {},
+            "url": {
+              "path": [
+                "job",
+                ":jobName",
+                ":buildNumber",
+                "api",
+                "json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "tree",
+                  "value": "<string>",
+                  "description": "Filter the response shape by a tree expression."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "jobName",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "buildNumber",
+                  "description": "(Required) "
+                },
+                {
+                  "description": "Hostname (and optional port) of your Jenkins instance.",
+                  "type": "any",
+                  "value": "{{jenkinsHost}}",
+                  "key": "jenkinsHost"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c88bd0be-2145-4bbd-8fe6-da3c4b576372",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "job",
+                    ":jobName",
+                    ":buildNumber",
+                    "api",
+                    "json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "tree",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "jobName",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "buildNumber",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": "Hostname (and optional port) of your Jenkins instance.",
+                      "type": "any",
+                      "value": "{{jenkinsHost}}",
+                      "key": "jenkinsHost"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"key_0\": 3923.3019782269553,\n  \"key_1\": 3107.8832009258963,\n  \"key_2\": 6120.723740080038,\n  \"key_3\": 5530\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "Hostname (and optional port) of your Jenkins instance.",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "jenkins.example.com",
+      "key": "jenkinsHost"
+    },
+    {
+      "type": "string",
+      "value": "https://{{jenkinsHost}}",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "c62b4e51-14f0-40f3-892f-556039760de0",
+    "name": "Jenkins Remote Access Computer Jobs API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Jenkins exposes a machine-consumable Remote Access API for nearly every resource it manages. The API is accessed by appending /api/ to any Jenkins resource URL (top-level Jenkins, jobs, builds, queue, computers, views). The API supports XML (with XPath filtering), JSON (with JSONP), and a Python-compatible variant. HTTP Basic authentication with API tokens is used for authenticated requests, and the X-Jenkins response header advertises the Jenkins version.\n\nContact Support:\n Name: Jenkins Project",
+      "type": "text/plain"
+    }
+  }
+}

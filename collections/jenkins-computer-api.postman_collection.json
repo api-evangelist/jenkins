@@ -1,0 +1,147 @@
+{
+  "item": [
+    {
+      "id": "50f235d4-c285-4bca-a895-b2a11892eb64",
+      "name": "Computer",
+      "description": {
+        "content": "Connected build agents.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "e0cf1c89-521f-45f7-8778-10bc0399b624",
+          "name": "List connected agents",
+          "request": {
+            "name": "List connected agents",
+            "description": {},
+            "url": {
+              "path": [
+                "computer",
+                "api",
+                "json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "Hostname (and optional port) of your Jenkins instance.",
+                  "type": "any",
+                  "value": "{{jenkinsHost}}",
+                  "key": "jenkinsHost"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ccc19000-9207-41ed-b1c6-27d4de5d6bed",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "computer",
+                    "api",
+                    "json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Hostname (and optional port) of your Jenkins instance.",
+                      "type": "any",
+                      "value": "{{jenkinsHost}}",
+                      "key": "jenkinsHost"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"key_0\": 9919.781535158905\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "Hostname (and optional port) of your Jenkins instance.",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "jenkins.example.com",
+      "key": "jenkinsHost"
+    },
+    {
+      "type": "string",
+      "value": "https://{{jenkinsHost}}",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "853abd16-cc27-4327-8889-3f9d93f0c0b5",
+    "name": "Jenkins Remote Access Computer API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Jenkins exposes a machine-consumable Remote Access API for nearly every resource it manages. The API is accessed by appending /api/ to any Jenkins resource URL (top-level Jenkins, jobs, builds, queue, computers, views). The API supports XML (with XPath filtering), JSON (with JSONP), and a Python-compatible variant. HTTP Basic authentication with API tokens is used for authenticated requests, and the X-Jenkins response header advertises the Jenkins version.\n\nContact Support:\n Name: Jenkins Project",
+      "type": "text/plain"
+    }
+  }
+}

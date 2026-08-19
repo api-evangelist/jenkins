@@ -1,0 +1,36 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Jenkins Remote Access Computer API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Computer",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List connected agents",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{jenkinsHost}/computer/api/json"
+          },
+          "docs": "List connected agents"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
