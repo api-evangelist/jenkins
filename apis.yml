@@ -32,7 +32,7 @@ tags:
 url: https://raw.githubusercontent.com/api-evangelist/jenkins/refs/heads/main/apis.yml
 created: '2024-01-01'
 modified: '2026-06-20'
-specificationVersion: '0.19'
+specificationVersion: '0.23'
 apis:
 - aid: jenkins:jenkins-computer-api
   name: Jenkins Computer API
