@@ -27,6 +27,15 @@ tags:
   - Continuous Delivery
   - Continuous Integration
   - DevOps
+  - Open-Source
+  - Remote Access API
+tags_raw:
+  - Automation
+  - Build Server
+  - CI/CD
+  - Continuous Delivery
+  - Continuous Integration
+  - DevOps
   - Open Source
   - Remote Access API
 url: https://raw.githubusercontent.com/api-evangelist/jenkins/refs/heads/main/apis.yml
@@ -54,6 +63,8 @@ apis:
   description: Jenkins jobs and their builds.
   humanURL: https://www.jenkins.io/doc/book/using/remote-access-api/
   tags:
+  - Job
+  tags_raw:
   - Jobs
   properties:
   - type: OpenAPI
