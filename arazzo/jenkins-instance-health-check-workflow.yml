@@ -13,8 +13,14 @@ info:
     the underlying OpenAPI description.
   version: 1.0.0
 sourceDescriptions:
-- name: jenkinsApi
-  url: ../openapi/jenkins-openapi.yml
+- name: computerApi
+  url: ../openapi/jenkins-computer-api-openapi.yml
+  type: openapi
+- name: queueApi
+  url: ../openapi/jenkins-queue-api-openapi.yml
+  type: openapi
+- name: serverApi
+  url: ../openapi/jenkins-server-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: instance-health-check

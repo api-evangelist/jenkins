@@ -13,8 +13,11 @@ info:
     OpenAPI description.
   version: 1.0.0
 sourceDescriptions:
-- name: jenkinsApi
-  url: ../openapi/jenkins-openapi.yml
+- name: jobsApi
+  url: ../openapi/jenkins-jobs-api-openapi.yml
+  type: openapi
+- name: serverApi
+  url: ../openapi/jenkins-server-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: inspect-job-latest-build
