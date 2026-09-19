@@ -93,6 +93,8 @@ apis:
   description: The build queue.
   humanURL: https://www.jenkins.io/doc/book/using/remote-access-api/
   tags:
+  - Queues
+  tags_raw:
   - Queue
   properties:
   - type: OpenAPI
@@ -108,6 +110,8 @@ apis:
   description: Information about the Jenkins instance.
   humanURL: https://www.jenkins.io/doc/book/using/remote-access-api/
   tags:
+  - Servers
+  tags_raw:
   - Server
   properties:
   - type: OpenAPI
