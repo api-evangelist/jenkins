@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Jenkins Remote Access Computer Server API
+  title: Jenkins Remote Access Server API
   description: Jenkins exposes a machine-consumable Remote Access API for nearly every resource it manages. The API is accessed by appending /api/ to any Jenkins resource URL (top-level Jenkins, jobs, builds, queue, computers, views). The API supports XML (with XPath filtering), JSON (with JSONP), and a Python-compatible variant. HTTP Basic authentication with API tokens is used for authenticated requests, and the X-Jenkins response header advertises the Jenkins version.
   version: 1.0.0
   contact:
@@ -58,20 +58,6 @@ paths:
                 type: string
 components:
   parameters:
-    Tree:
-      name: tree
-      in: query
-      required: false
-      schema:
-        type: string
-      description: Filter the response shape by a tree expression.
-    Depth:
-      name: depth
-      in: query
-      required: false
-      schema:
-        type: integer
-      description: Depth of nested objects to include.
     Xpath:
       name: xpath
       in: query
@@ -79,6 +65,20 @@ components:
       schema:
         type: string
       description: XPath expression to filter the XML response.
+    Depth:
+      name: depth
+      in: query
+      required: false
+      schema:
+        type: integer
+      description: Depth of nested objects to include.
+    Tree:
+      name: tree
+      in: query
+      required: false
+      schema:
+        type: string
+      description: Filter the response shape by a tree expression.
   schemas:
     Resource:
       type: object
