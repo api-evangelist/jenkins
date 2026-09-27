@@ -40,7 +40,7 @@ tags:
   - Continuous Delivery
   - Continuous Integration
   - DevOps
-  - Open-Source
+  - Open Source
   - Remote Access API
 tags_raw:
   - Automation
@@ -51,6 +51,7 @@ tags_raw:
   - DevOps
   - Open Source
   - Remote Access API
+  - Open-Source
 url: https://raw.githubusercontent.com/api-evangelist/jenkins/refs/heads/main/apis.yml
 created: '2024-01-01'
 modified: '2026-06-20'

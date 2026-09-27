@@ -102,11 +102,14 @@ paths:
               schema:
                 $ref: '#/components/schemas/Resource'
 components:
-  schemas:
-    Resource:
-      type: object
-      additionalProperties: true
   parameters:
+    Tree:
+      name: tree
+      in: query
+      required: false
+      schema:
+        type: string
+      description: Filter the response shape by a tree expression.
     Depth:
       name: depth
       in: query
@@ -120,13 +123,10 @@ components:
       required: true
       schema:
         type: string
-    Tree:
-      name: tree
-      in: query
-      required: false
-      schema:
-        type: string
-      description: Filter the response shape by a tree expression.
+  schemas:
+    Resource:
+      type: object
+      additionalProperties: true
   securitySchemes:
     basicAuth:
       type: http
