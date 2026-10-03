@@ -65,13 +65,6 @@ components:
       schema:
         type: string
       description: XPath expression to filter the XML response.
-    Tree:
-      name: tree
-      in: query
-      required: false
-      schema:
-        type: string
-      description: Filter the response shape by a tree expression.
     Depth:
       name: depth
       in: query
@@ -79,6 +72,13 @@ components:
       schema:
         type: integer
       description: Depth of nested objects to include.
+    Tree:
+      name: tree
+      in: query
+      required: false
+      schema:
+        type: string
+      description: Filter the response shape by a tree expression.
   schemas:
     Resource:
       type: object

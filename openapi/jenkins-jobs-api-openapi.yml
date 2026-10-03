@@ -103,13 +103,12 @@ paths:
                 $ref: '#/components/schemas/Resource'
 components:
   parameters:
-    Tree:
-      name: tree
-      in: query
-      required: false
+    JobName:
+      name: jobName
+      in: path
+      required: true
       schema:
         type: string
-      description: Filter the response shape by a tree expression.
     Depth:
       name: depth
       in: query
@@ -117,12 +116,13 @@ components:
       schema:
         type: integer
       description: Depth of nested objects to include.
-    JobName:
-      name: jobName
-      in: path
-      required: true
+    Tree:
+      name: tree
+      in: query
+      required: false
       schema:
         type: string
+      description: Filter the response shape by a tree expression.
   schemas:
     Resource:
       type: object
