@@ -124,6 +124,9 @@ apis:
   - type: APITokens
     url: https://www.jenkins.io/doc/book/managing/system-configuration/#configuring-api-tokens
 common:
+  - type: CapabilityMap
+    url: capabilities/jenkins-capability-edges.yml
+    name: Jenkins Business Capability Map
   - type: Arazzo
     url: arazzo/jenkins-trigger-build-and-await-result-workflow.yml
     name: Jenkins Trigger a Build and Await the Result
