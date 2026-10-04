@@ -58,6 +58,13 @@ paths:
                 type: string
 components:
   parameters:
+    Tree:
+      name: tree
+      in: query
+      required: false
+      schema:
+        type: string
+      description: Filter the response shape by a tree expression.
     Xpath:
       name: xpath
       in: query
@@ -72,13 +79,6 @@ components:
       schema:
         type: integer
       description: Depth of nested objects to include.
-    Tree:
-      name: tree
-      in: query
-      required: false
-      schema:
-        type: string
-      description: Filter the response shape by a tree expression.
   schemas:
     Resource:
       type: object
