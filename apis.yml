@@ -124,6 +124,12 @@ apis:
   - type: APITokens
     url: https://www.jenkins.io/doc/book/managing/system-configuration/#configuring-api-tokens
 common:
+  - type: Plans
+    url: plans/jenkins-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/jenkins-rate-limits.yml
+  - type: FinOps
+    url: finops/jenkins-finops.yml
   - type: CapabilityMap
     url: capabilities/jenkins-capability-edges.yml
     name: Jenkins Business Capability Map
