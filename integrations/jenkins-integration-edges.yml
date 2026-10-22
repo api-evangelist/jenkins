@@ -9,6 +9,9 @@ checked:
 - https://github.com/open-telemetry/opentelemetry.io/blob/main/data/ecosystem/vendors.yaml
 - https://github.com/open-telemetry/opentelemetry.io/blob/main/data/registry/
 - https://plugins.jetbrains.com/
+- https://api.first.org/data/v1/teams
+- https://raw.githubusercontent.com/CVEProject/cve-website/dev/src/assets/data/CNAsList.json
+- https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json
 marketplace_apps: []
 edges:
 - partner_name: OpenTelemetry
@@ -106,6 +109,44 @@ edges:
     builder: n8n (built-in node)
   detected_by: sweep-workflow-automation.py
   first_seen: '2026-10-15'
+- partner_name: CVE Program (CVE Numbering Authorities)
+  partner: null
+  partner_match: register
+  type: register
+  channel: standard-directory
+  relationship: standard-participant
+  direction: partner-built
+  evidence: https://www.cve.org/PartnerInformation/ListofPartners/partner/jenkins
+  category: Vulnerability disclosure (CVE Numbering Authority)
+  contract_reference:
+    register: CVE Program CNA list (github.com/CVEProject/cve-website CNAsList.json @ 239d3d9b68e0)
+    standard: CVE Program CNA Operational Rules (CVE Numbering Authority)
+    spec_file: null
+    role: cve-numbering-authority
+    registered_name: Jenkins Project
+    matched_domain: jenkins.io
+    matched_by: domain+name-among-holders
+    cna_id: CNA-2018-0015
+    cna_short_name: jenkins
+    cna_types:
+    - Open Source
+    cna_roles:
+    - CNA
+    scope: Jenkins and Jenkins plugins distributed by the Jenkins Project (listed on <a href='https://plugins.jenkins.io/'
+      target='_blank'>plugins.jenkins.io</a>) only.
+    top_level_root: MITRE Corporation
+    root: n/a
+    security_advisories:
+    - https://jenkins.io/security/advisories/
+    disclosure_policy:
+    - https://jenkins.io/security/
+    country: USA
+    signal_note: listing as a CVE Numbering Authority = participation (a public commitment to assign CVE IDs and
+      publish advisories for its scope); never a count of CVEs
+    detected_by: sweep-vulnerability-disclosure-cna.py
+    detected: '2026-10-22'
+  detected_by: sweep-vulnerability-disclosure-cna.py
+  first_seen: '2026-10-22'
 source:
 - https://github.com/open-telemetry/opentelemetry.io/blob/main/data/ecosystem/vendors.yaml
 - https://github.com/open-telemetry/opentelemetry.io/blob/main/data/registry/
