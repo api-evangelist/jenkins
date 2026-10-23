@@ -1,8 +1,6 @@
 generated: '2026-10-13'
 method: searched
 checked:
-- artifact-hub/integrations/artifact-hub-integration-edges.yml
-- https://api.first.org/data/v1/teams
 - https://focus.finops.org/data-generators/
 - https://github.com/cncf/k8s-conformance
 - https://github.com/cncf/landscape
@@ -10,14 +8,16 @@ checked:
 - https://github.com/n8n-io/n8n/tree/f73dc337f8dc61a4fd44aebe41c55faafe4f53a4/packages/nodes-base/nodes/
 - https://github.com/open-telemetry/opentelemetry.io/blob/main/data/ecosystem/vendors.yaml
 - https://github.com/open-telemetry/opentelemetry.io/blob/main/data/registry/
+- https://plugins.jetbrains.com/
+- https://api.first.org/data/v1/teams
+- https://raw.githubusercontent.com/CVEProject/cve-website/dev/src/assets/data/CNAsList.json
+- https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json
+- https://www.bestpractices.dev/en/projects.json
+- artifact-hub/integrations/artifact-hub-integration-edges.yml
 - https://landscape.cd.foundation/data/full.json
 - https://plugins.jenkins.io/api/plugin/
 - https://plugins.jenkins.io/api/plugins
-- https://plugins.jetbrains.com/
-- https://raw.githubusercontent.com/CVEProject/cve-website/dev/src/assets/data/CNAsList.json
-- https://www.bestpractices.dev/en/projects.json
 - https://www.bestpractices.dev/en/projects.json?page=N
-- https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json
 marketplace_apps: []
 edges:
 - partner_name: OpenTelemetry
@@ -212,6 +212,881 @@ edges:
     detected: '2026-10-22'
   detected_by: sweep-openssf-best-practices-badges.py
   first_seen: '2026-10-22'
+- partner_name: API Fortress
+  partner: api-fortress
+  partner_match: domain
+  app: API Fortress
+  apps:
+  - API Fortress (apifortress)
+  listing_count: 1
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://plugins.jenkins.io/apifortress/
+  category: Jenkins plugin
+  plugin_installations:
+    apifortress: 10
+  vendor_control:
+  - 'apifortress: Maven groupId com.apifortress.jenkins -> apifortress.com (domain)'
+  signal_note: 'plugins.jenkins.io listing maintained by the vendor itself (vendor-control signal: groupId-domain);
+    plugin_installations (stats.currentInstalls) is the weight, recorded as context, never counted; listing alone
+    = participation, Jenkins has no certification tier'
+  detected_by: sweep-jenkins-cd-foundation-plugins.py
+  detected: '2026-10-22'
+- partner_name: Applitools
+  partner: applitools
+  partner_match: register
+  app: Applitools Eyes
+  apps:
+  - Applitools Eyes (applitools-eyes)
+  listing_count: 1
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://plugins.jenkins.io/applitools-eyes/
+  category: Jenkins plugin
+  plugin_installations:
+    applitools-eyes: 69
+  vendor_control:
+  - 'applitools-eyes: maintainer account ''applitools'' is the GitHub organization on all/applitools''s apis.yml'
+  signal_note: 'plugins.jenkins.io listing maintained by the vendor itself (vendor-control signal: maintainer-account=github-org);
+    plugin_installations (stats.currentInstalls) is the weight, recorded as context, never counted; listing alone
+    = participation, Jenkins has no certification tier'
+  detected_by: sweep-jenkins-cd-foundation-plugins.py
+  detected: '2026-10-22'
+  match_basis: maintainer account = the vendor's GitHub organization (apis.yml GitHubOrganization)
+- partner_name: Atlassian
+  partner: atlassian
+  partner_match: domain+verified
+  app: Atlassian Jira Software Cloud
+  apps:
+  - Atlassian Jira Software Cloud (atlassian-jira-software-cloud)
+  listing_count: 1
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://plugins.jenkins.io/atlassian-jira-software-cloud/
+  category: Jenkins plugin
+  plugin_installations:
+    atlassian-jira-software-cloud: 3521
+  vendor_control:
+  - 'atlassian-jira-software-cloud: Maven groupId com.atlassian.jira.software.cloud.jenkins -> atlassian.com; the
+    publisher is Atlassian (all/jira is a product repo on the parent''s domain; hand verified)'
+  signal_note: 'plugins.jenkins.io listing maintained by the vendor itself (vendor-control signal: groupId-domain);
+    plugin_installations (stats.currentInstalls) is the weight, recorded as context, never counted; listing alone
+    = participation, Jenkins has no certification tier'
+  detected_by: sweep-jenkins-cd-foundation-plugins.py
+  detected: '2026-10-22'
+- partner_name: BrowserStack
+  partner: browserstack
+  partner_match: register
+  app: BrowserStack
+  apps:
+  - BrowserStack (browserstack-integration)
+  listing_count: 1
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://plugins.jenkins.io/browserstack-integration/
+  category: Jenkins plugin
+  plugin_installations:
+    browserstack-integration: 1334
+  vendor_control:
+  - 'browserstack-integration: maintainer account ''browserstack'' is the GitHub organization on all/browserstack''s
+    apis.yml'
+  signal_note: 'plugins.jenkins.io listing maintained by the vendor itself (vendor-control signal: maintainer-account=github-org);
+    plugin_installations (stats.currentInstalls) is the weight, recorded as context, never counted; listing alone
+    = participation, Jenkins has no certification tier'
+  detected_by: sweep-jenkins-cd-foundation-plugins.py
+  detected: '2026-10-22'
+  match_basis: maintainer account = the vendor's GitHub organization (apis.yml GitHubOrganization)
+- partner_name: Checkmarx
+  partner: checkmarx
+  partner_match: domain
+  app: Checkmarx
+  apps:
+  - Checkmarx (checkmarx)
+  - Checkmarx AST Scanner (checkmarx-ast-scanner)
+  listing_count: 2
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://plugins.jenkins.io/checkmarx/
+  category: Jenkins plugin
+  plugin_installations:
+    checkmarx: 3909
+    checkmarx-ast-scanner: 774
+  vendor_control:
+  - 'checkmarx: Maven groupId com.checkmarx.jenkins -> checkmarx.com (domain)'
+  - 'checkmarx-ast-scanner: Maven groupId com.checkmarx.jenkins -> checkmarx.com (domain)'
+  signal_note: 'plugins.jenkins.io listing maintained by the vendor itself (vendor-control signal: groupId-domain);
+    plugin_installations (stats.currentInstalls) is the weight, recorded as context, never counted; listing alone
+    = participation, Jenkins has no certification tier'
+  detected_by: sweep-jenkins-cd-foundation-plugins.py
+  detected: '2026-10-22'
+- partner_name: CloudBees
+  partner: cloudbees
+  partner_match: domain+name-among-holders
+  app: CloudBees Docker Custom Build Environment
+  apps:
+  - CloudBees Docker Custom Build Environment (docker-custom-build-environment)
+  - CloudBees Credentials (cloudbees-credentials)
+  - CloudBees File Leak Detector (file-leak-detector)
+  listing_count: 3
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://plugins.jenkins.io/docker-custom-build-environment/
+  category: Jenkins plugin
+  plugin_installations:
+    docker-custom-build-environment: 2082
+    cloudbees-credentials: 1954
+    file-leak-detector: 718
+  vendor_control:
+  - 'docker-custom-build-environment: Maven groupId com.cloudbees.jenkins.plugins -> cloudbees.com (domain+name-among-holders)'
+  - 'cloudbees-credentials: Maven groupId com.cloudbees.jenkins.plugins -> cloudbees.com (domain+name-among-holders)'
+  - 'file-leak-detector: Maven groupId com.cloudbees.jenkins.plugins -> cloudbees.com (domain+name-among-holders)'
+  signal_note: 'plugins.jenkins.io listing maintained by the vendor itself (vendor-control signal: groupId-domain);
+    plugin_installations (stats.currentInstalls) is the weight, recorded as context, never counted; listing alone
+    = participation, Jenkins has no certification tier'
+  detected_by: sweep-jenkins-cd-foundation-plugins.py
+  detected: '2026-10-22'
+- partner_name: Conjur
+  partner: conjur
+  partner_match: domain
+  app: Conjur Secrets
+  apps:
+  - Conjur Secrets (conjur-credentials)
+  listing_count: 1
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://plugins.jenkins.io/conjur-credentials/
+  category: Jenkins plugin
+  plugin_installations:
+    conjur-credentials: 817
+  vendor_control:
+  - 'conjur-credentials: Maven groupId org.conjur.jenkins -> conjur.org (domain)'
+  signal_note: 'plugins.jenkins.io listing maintained by the vendor itself (vendor-control signal: groupId-domain);
+    plugin_installations (stats.currentInstalls) is the weight, recorded as context, never counted; listing alone
+    = participation, Jenkins has no certification tier'
+  detected_by: sweep-jenkins-cd-foundation-plugins.py
+  detected: '2026-10-22'
+- partner_name: Copado
+  partner: copado
+  partner_match: domain
+  app: Copado
+  apps:
+  - Copado (copado)
+  listing_count: 1
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://plugins.jenkins.io/copado/
+  category: Jenkins plugin
+  plugin_installations:
+    copado: 51
+  vendor_control:
+  - 'copado: Maven groupId com.copado.jenkins -> copado.com (domain)'
+  signal_note: 'plugins.jenkins.io listing maintained by the vendor itself (vendor-control signal: groupId-domain);
+    plugin_installations (stats.currentInstalls) is the weight, recorded as context, never counted; listing alone
+    = participation, Jenkins has no certification tier'
+  detected_by: sweep-jenkins-cd-foundation-plugins.py
+  detected: '2026-10-22'
+- partner_name: Datadog
+  partner: datadog
+  partner_match: register
+  app: Datadog
+  apps:
+  - Datadog (datadog)
+  listing_count: 1
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://plugins.jenkins.io/datadog/
+  category: Jenkins plugin
+  plugin_installations:
+    datadog: 2566
+  vendor_control:
+  - 'datadog: maintainer account ''datadog'' is the GitHub organization on all/datadog''s apis.yml'
+  signal_note: 'plugins.jenkins.io listing maintained by the vendor itself (vendor-control signal: maintainer-account=github-org);
+    plugin_installations (stats.currentInstalls) is the weight, recorded as context, never counted; listing alone
+    = participation, Jenkins has no certification tier'
+  detected_by: sweep-jenkins-cd-foundation-plugins.py
+  detected: '2026-10-22'
+  match_basis: maintainer account = the vendor's GitHub organization (apis.yml GitHubOrganization)
+- partner_name: Data Theorem
+  partner: datatheorem
+  partner_match: domain
+  app: 'Data Theorem Mobile Security: CI/CD'
+  apps:
+  - 'Data Theorem Mobile Security: CI/CD (datatheorem-mobile-app-security)'
+  listing_count: 1
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://plugins.jenkins.io/datatheorem-mobile-app-security/
+  category: Jenkins plugin
+  plugin_installations:
+    datatheorem-mobile-app-security: 83
+  vendor_control:
+  - 'datatheorem-mobile-app-security: Maven groupId com.datatheorem.mobileappsecurity.jenkins.plugin -> datatheorem.com
+    (domain)'
+  signal_note: 'plugins.jenkins.io listing maintained by the vendor itself (vendor-control signal: groupId-domain);
+    plugin_installations (stats.currentInstalls) is the weight, recorded as context, never counted; listing alone
+    = participation, Jenkins has no certification tier'
+  detected_by: sweep-jenkins-cd-foundation-plugins.py
+  detected: '2026-10-22'
+- partner_name: Dynatrace
+  partner: dynatrace
+  partner_match: register
+  app: Dynatrace Application Monitoring
+  apps:
+  - Dynatrace Application Monitoring (dynatrace-dashboard)
+  listing_count: 1
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://plugins.jenkins.io/dynatrace-dashboard/
+  category: Jenkins plugin
+  plugin_installations:
+    dynatrace-dashboard: 89
+  vendor_control:
+  - 'dynatrace-dashboard: maintainer account ''dynatrace'' is the GitHub organization on all/dynatrace''s apis.yml'
+  signal_note: 'plugins.jenkins.io listing maintained by the vendor itself (vendor-control signal: maintainer-account=github-org);
+    plugin_installations (stats.currentInstalls) is the weight, recorded as context, never counted; listing alone
+    = participation, Jenkins has no certification tier'
+  detected_by: sweep-jenkins-cd-foundation-plugins.py
+  detected: '2026-10-22'
+  match_basis: maintainer account = the vendor's GitHub organization (apis.yml GitHubOrganization)
+- partner_name: Finite State
+  partner: finite-state
+  partner_match: register
+  app: Third Party Upload
+  apps:
+  - Third Party Upload (finite-state-third-party-upload)
+  - Finite State Analysis (finite-state-analysis)
+  - Upload Binary Scan (finite-state-binary-scan)
+  listing_count: 3
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://plugins.jenkins.io/finite-state-third-party-upload/
+  category: Jenkins plugin
+  plugin_installations:
+    finite-state-third-party-upload: 8
+    finite-state-analysis: 8
+    finite-state-binary-scan: 7
+  vendor_control:
+  - 'finite-state-third-party-upload: maintainer account ''finitestateinc'' is the GitHub organization on all/finite-state''s
+    apis.yml'
+  - 'finite-state-analysis: maintainer account ''finitestateinc'' is the GitHub organization on all/finite-state''s
+    apis.yml'
+  - 'finite-state-binary-scan: maintainer account ''finitestateinc'' is the GitHub organization on all/finite-state''s
+    apis.yml'
+  signal_note: 'plugins.jenkins.io listing maintained by the vendor itself (vendor-control signal: maintainer-account=github-org);
+    plugin_installations (stats.currentInstalls) is the weight, recorded as context, never counted; listing alone
+    = participation, Jenkins has no certification tier'
+  detected_by: sweep-jenkins-cd-foundation-plugins.py
+  detected: '2026-10-22'
+  match_basis: maintainer account = the vendor's GitHub organization (apis.yml GitHubOrganization)
+- partner_name: Spot by Flexera
+  partner: flexera
+  partner_match: register
+  app: Spotinst
+  apps:
+  - Spotinst (spotinst)
+  listing_count: 1
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://plugins.jenkins.io/spotinst/
+  category: Jenkins plugin
+  plugin_installations:
+    spotinst: 300
+  vendor_control:
+  - 'spotinst: maintainer account ''spotinst'' is the GitHub organization on all/flexera''s apis.yml'
+  signal_note: 'plugins.jenkins.io listing maintained by the vendor itself (vendor-control signal: maintainer-account=github-org);
+    plugin_installations (stats.currentInstalls) is the weight, recorded as context, never counted; listing alone
+    = participation, Jenkins has no certification tier'
+  detected_by: sweep-jenkins-cd-foundation-plugins.py
+  detected: '2026-10-22'
+  match_basis: maintainer account = the vendor's GitHub organization (apis.yml GitHubOrganization)
+- partner_name: IBM
+  partner: ibm
+  partner_match: domain+name-among-holders
+  app: IBM Cloud DevOps
+  apps:
+  - IBM Cloud DevOps (ibm-cloud-devops)
+  - IBM Continuous Release (ibm-continuous-release)
+  listing_count: 2
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://plugins.jenkins.io/ibm-cloud-devops/
+  category: Jenkins plugin
+  plugin_installations:
+    ibm-cloud-devops: 33
+    ibm-continuous-release: 7
+  vendor_control:
+  - 'ibm-cloud-devops: Maven groupId com.ibm.devops -> ibm.com (domain+name-among-holders)'
+  - 'ibm-continuous-release: Maven groupId com.ibm.devops -> ibm.com (domain+name-among-holders)'
+  signal_note: 'plugins.jenkins.io listing maintained by the vendor itself (vendor-control signal: groupId-domain);
+    plugin_installations (stats.currentInstalls) is the weight, recorded as context, never counted; listing alone
+    = participation, Jenkins has no certification tier'
+  detected_by: sweep-jenkins-cd-foundation-plugins.py
+  detected: '2026-10-22'
+- partner_name: Kobiton
+  partner: kobiton
+  partner_match: register
+  app: Kobiton
+  apps:
+  - Kobiton (kobiton-integration)
+  listing_count: 1
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://plugins.jenkins.io/kobiton-integration/
+  category: Jenkins plugin
+  plugin_installations:
+    kobiton-integration: 1
+  vendor_control:
+  - 'kobiton-integration: maintainer account ''kobiton'' is the GitHub organization on all/kobiton''s apis.yml'
+  signal_note: 'plugins.jenkins.io listing maintained by the vendor itself (vendor-control signal: maintainer-account=github-org);
+    plugin_installations (stats.currentInstalls) is the weight, recorded as context, never counted; listing alone
+    = participation, Jenkins has no certification tier'
+  detected_by: sweep-jenkins-cd-foundation-plugins.py
+  detected: '2026-10-22'
+  match_basis: maintainer account = the vendor's GitHub organization (apis.yml GitHubOrganization)
+- partner_name: LambdaTest
+  partner: lambdatest
+  partner_match: register
+  app: lambdatest-automation
+  apps:
+  - lambdatest-automation (lambdatest-automation)
+  listing_count: 1
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://plugins.jenkins.io/lambdatest-automation/
+  category: Jenkins plugin
+  plugin_installations:
+    lambdatest-automation: 269
+  vendor_control:
+  - 'lambdatest-automation: maintainer account ''lambdatest'' is the GitHub organization on all/lambdatest''s apis.yml'
+  signal_note: 'plugins.jenkins.io listing maintained by the vendor itself (vendor-control signal: maintainer-account=github-org);
+    plugin_installations (stats.currentInstalls) is the weight, recorded as context, never counted; listing alone
+    = participation, Jenkins has no certification tier'
+  detected_by: sweep-jenkins-cd-foundation-plugins.py
+  detected: '2026-10-22'
+  match_basis: maintainer account = the vendor's GitHub organization (apis.yml GitHubOrganization)
+- partner_name: Mabl
+  partner: mabl
+  partner_match: domain
+  app: mabl
+  apps:
+  - mabl (mabl-integration)
+  listing_count: 1
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://plugins.jenkins.io/mabl-integration/
+  category: Jenkins plugin
+  plugin_installations:
+    mabl-integration: 65
+  vendor_control:
+  - 'mabl-integration: Maven groupId com.mabl.integration.jenkins -> mabl.com (domain)'
+  signal_note: 'plugins.jenkins.io listing maintained by the vendor itself (vendor-control signal: groupId-domain);
+    plugin_installations (stats.currentInstalls) is the weight, recorded as context, never counted; listing alone
+    = participation, Jenkins has no certification tier'
+  detected_by: sweep-jenkins-cd-foundation-plugins.py
+  detected: '2026-10-22'
+- partner_name: MinIO
+  partner: minio
+  partner_match: register
+  app: Minio Storage
+  apps:
+  - Minio Storage (minio-storage)
+  listing_count: 1
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://plugins.jenkins.io/minio-storage/
+  category: Jenkins plugin
+  plugin_installations:
+    minio-storage: 59
+  vendor_control:
+  - 'minio-storage: maintainer account ''minio'' is the GitHub organization on all/minio''s apis.yml'
+  signal_note: 'plugins.jenkins.io listing maintained by the vendor itself (vendor-control signal: maintainer-account=github-org);
+    plugin_installations (stats.currentInstalls) is the weight, recorded as context, never counted; listing alone
+    = participation, Jenkins has no certification tier'
+  detected_by: sweep-jenkins-cd-foundation-plugins.py
+  detected: '2026-10-22'
+  match_basis: maintainer account = the vendor's GitHub organization (apis.yml GitHubOrganization)
+- partner_name: NeuVector
+  partner: neuvector
+  partner_match: register
+  app: NeuVector Vulnerability Scanner
+  apps:
+  - NeuVector Vulnerability Scanner (neuvector-vulnerability-scanner)
+  listing_count: 1
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://plugins.jenkins.io/neuvector-vulnerability-scanner/
+  category: Jenkins plugin
+  plugin_installations:
+    neuvector-vulnerability-scanner: 77
+  vendor_control:
+  - 'neuvector-vulnerability-scanner: maintainer account ''neuvector'' is the GitHub organization on all/neuvector''s
+    apis.yml'
+  signal_note: 'plugins.jenkins.io listing maintained by the vendor itself (vendor-control signal: maintainer-account=github-org);
+    plugin_installations (stats.currentInstalls) is the weight, recorded as context, never counted; listing alone
+    = participation, Jenkins has no certification tier'
+  detected_by: sweep-jenkins-cd-foundation-plugins.py
+  detected: '2026-10-22'
+  match_basis: maintainer account = the vendor's GitHub organization (apis.yml GitHubOrganization)
+- partner_name: Octopus Deploy
+  partner: octopus-deploy
+  partner_match: register
+  app: Octopus Deploy
+  apps:
+  - Octopus Deploy (octopusdeploy)
+  listing_count: 1
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://plugins.jenkins.io/octopusdeploy/
+  category: Jenkins plugin
+  plugin_installations:
+    octopusdeploy: 542
+  vendor_control:
+  - 'octopusdeploy: maintainer account ''octopusdeploy'' is the GitHub organization on all/octopus-deploy''s apis.yml'
+  signal_note: 'plugins.jenkins.io listing maintained by the vendor itself (vendor-control signal: maintainer-account=github-org);
+    plugin_installations (stats.currentInstalls) is the weight, recorded as context, never counted; listing alone
+    = participation, Jenkins has no certification tier'
+  detected_by: sweep-jenkins-cd-foundation-plugins.py
+  detected: '2026-10-22'
+  match_basis: maintainer account = the vendor's GitHub organization (apis.yml GitHubOrganization)
+- partner_name: OpsLevel
+  partner: opslevel
+  partner_match: register
+  app: OpsLevel
+  apps:
+  - OpsLevel (opslevel)
+  listing_count: 1
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://plugins.jenkins.io/opslevel/
+  category: Jenkins plugin
+  plugin_installations:
+    opslevel: 14
+  vendor_control:
+  - 'opslevel: maintainer account ''opslevel'' is the GitHub organization on all/opslevel''s apis.yml'
+  signal_note: 'plugins.jenkins.io listing maintained by the vendor itself (vendor-control signal: maintainer-account=github-org);
+    plugin_installations (stats.currentInstalls) is the weight, recorded as context, never counted; listing alone
+    = participation, Jenkins has no certification tier'
+  detected_by: sweep-jenkins-cd-foundation-plugins.py
+  detected: '2026-10-22'
+  match_basis: maintainer account = the vendor's GitHub organization (apis.yml GitHubOrganization)
+- partner_name: Parallels
+  partner: parallels
+  partner_match: domain+name-among-holders
+  app: Parallels Desktop Cloud
+  apps:
+  - Parallels Desktop Cloud (parallels-desktop)
+  listing_count: 1
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://plugins.jenkins.io/parallels-desktop/
+  category: Jenkins plugin
+  plugin_installations:
+    parallels-desktop: 25
+  vendor_control:
+  - 'parallels-desktop: Maven groupId com.parallels -> parallels.com (domain+name-among-holders)'
+  signal_note: 'plugins.jenkins.io listing maintained by the vendor itself (vendor-control signal: groupId-domain);
+    plugin_installations (stats.currentInstalls) is the weight, recorded as context, never counted; listing alone
+    = participation, Jenkins has no certification tier'
+  detected_by: sweep-jenkins-cd-foundation-plugins.py
+  detected: '2026-10-22'
+- partner_name: Qualys
+  partner: qualys
+  partner_match: register
+  app: Qualys Web App Scanning Connector
+  apps:
+  - Qualys Web App Scanning Connector (qualys-was)
+  - Qualys Container Scanning Connector (qualys-cs)
+  - Qualys Host Scanning Connector (qualys-vm)
+  - Qualys Policy Compliance Scanning Connector (qualys-pc)
+  - Qualys IaC Security (qualys-iac-security)
+  listing_count: 5
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://plugins.jenkins.io/qualys-was/
+  category: Jenkins plugin
+  plugin_installations:
+    qualys-was: 318
+    qualys-cs: 166
+    qualys-vm: 84
+    qualys-pc: 70
+    qualys-iac-security: 15
+  vendor_control:
+  - 'qualys-was: maintainer account ''qualys'' is the GitHub organization on all/qualys''s apis.yml'
+  - 'qualys-cs: maintainer account ''qualys'' is the GitHub organization on all/qualys''s apis.yml'
+  - 'qualys-vm: maintainer account ''qualys'' is the GitHub organization on all/qualys''s apis.yml'
+  - 'qualys-pc: maintainer account ''qualys'' is the GitHub organization on all/qualys''s apis.yml'
+  - 'qualys-iac-security: maintainer account ''qualys'' is the GitHub organization on all/qualys''s apis.yml'
+  signal_note: 'plugins.jenkins.io listing maintained by the vendor itself (vendor-control signal: maintainer-account=github-org);
+    plugin_installations (stats.currentInstalls) is the weight, recorded as context, never counted; listing alone
+    = participation, Jenkins has no certification tier'
+  detected_by: sweep-jenkins-cd-foundation-plugins.py
+  detected: '2026-10-22'
+  match_basis: maintainer account = the vendor's GitHub organization (apis.yml GitHubOrganization)
+- partner_name: Rapid7
+  partner: rapid7
+  partner_match: register
+  app: InsightVM Container Image Scanner
+  apps:
+  - InsightVM Container Image Scanner (rapid7-insightvm-container-assessment)
+  listing_count: 1
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://plugins.jenkins.io/rapid7-insightvm-container-assessment/
+  category: Jenkins plugin
+  plugin_installations:
+    rapid7-insightvm-container-assessment: 86
+  vendor_control:
+  - 'rapid7-insightvm-container-assessment: maintainer account ''rapid7'' is the GitHub organization on all/rapid7''s
+    apis.yml'
+  signal_note: 'plugins.jenkins.io listing maintained by the vendor itself (vendor-control signal: maintainer-account=github-org);
+    plugin_installations (stats.currentInstalls) is the weight, recorded as context, never counted; listing alone
+    = participation, Jenkins has no certification tier'
+  detected_by: sweep-jenkins-cd-foundation-plugins.py
+  detected: '2026-10-22'
+  match_basis: maintainer account = the vendor's GitHub organization (apis.yml GitHubOrganization)
+- partner_name: Snyk
+  partner: snyk
+  partner_match: domain+name-among-holders
+  app: Snyk Security
+  apps:
+  - Snyk Security (snyk-security-scanner)
+  listing_count: 1
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://plugins.jenkins.io/snyk-security-scanner/
+  category: Jenkins plugin
+  plugin_installations:
+    snyk-security-scanner: 2053
+  vendor_control:
+  - 'snyk-security-scanner: Maven groupId io.snyk.plugins -> snyk.io (domain+name-among-holders)'
+  signal_note: 'plugins.jenkins.io listing maintained by the vendor itself (vendor-control signal: groupId-domain);
+    plugin_installations (stats.currentInstalls) is the weight, recorded as context, never counted; listing alone
+    = participation, Jenkins has no certification tier'
+  detected_by: sweep-jenkins-cd-foundation-plugins.py
+  detected: '2026-10-22'
+- partner_name: Split
+  partner: split
+  partner_match: domain
+  app: Split Admin
+  apps:
+  - Split Admin (split-admin)
+  listing_count: 1
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://plugins.jenkins.io/split-admin/
+  category: Jenkins plugin
+  plugin_installations:
+    split-admin: 14
+  vendor_control:
+  - 'split-admin: Maven groupId io.split.jenkins.plugins -> split.io (domain)'
+  signal_note: 'plugins.jenkins.io listing maintained by the vendor itself (vendor-control signal: groupId-domain);
+    plugin_installations (stats.currentInstalls) is the weight, recorded as context, never counted; listing alone
+    = participation, Jenkins has no certification tier'
+  detected_by: sweep-jenkins-cd-foundation-plugins.py
+  detected: '2026-10-22'
+- partner_name: Splunk
+  partner: splunk
+  partner_match: domain+name-among-holders
+  app: Splunk
+  apps:
+  - Splunk (splunk-devops)
+  - Splunk Plugin Extension (splunk-devops-extend)
+  listing_count: 2
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://plugins.jenkins.io/splunk-devops/
+  category: Jenkins plugin
+  plugin_installations:
+    splunk-devops: 3032
+    splunk-devops-extend: 1878
+  vendor_control:
+  - 'splunk-devops: Maven groupId com.splunk.splunkins -> splunk.com (domain+name-among-holders)'
+  - 'splunk-devops-extend: Maven groupId com.splunk.splunkins -> splunk.com (domain+name-among-holders)'
+  signal_note: 'plugins.jenkins.io listing maintained by the vendor itself (vendor-control signal: groupId-domain);
+    plugin_installations (stats.currentInstalls) is the weight, recorded as context, never counted; listing alone
+    = participation, Jenkins has no certification tier'
+  detected_by: sweep-jenkins-cd-foundation-plugins.py
+  detected: '2026-10-22'
+- partner_name: StackRox
+  partner: stackrox
+  partner_match: register
+  app: StackRox Container Image Scanner
+  apps:
+  - StackRox Container Image Scanner (stackrox-container-image-scanner)
+  listing_count: 1
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://plugins.jenkins.io/stackrox-container-image-scanner/
+  category: Jenkins plugin
+  plugin_installations:
+    stackrox-container-image-scanner: 84
+  vendor_control:
+  - 'stackrox-container-image-scanner: maintainer account ''stackrox'' is the GitHub organization on all/stackrox''s
+    apis.yml'
+  signal_note: 'plugins.jenkins.io listing maintained by the vendor itself (vendor-control signal: maintainer-account=github-org);
+    plugin_installations (stats.currentInstalls) is the weight, recorded as context, never counted; listing alone
+    = participation, Jenkins has no certification tier'
+  detected_by: sweep-jenkins-cd-foundation-plugins.py
+  detected: '2026-10-22'
+  match_basis: maintainer account = the vendor's GitHub organization (apis.yml GitHubOrganization)
+- partner_name: Sysdig
+  partner: sysdig
+  partner_match: register-name
+  app: Sysdig Secure Container Image Scanner
+  apps:
+  - Sysdig Secure Container Image Scanner (sysdig-secure)
+  listing_count: 1
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://plugins.jenkins.io/sysdig-secure/
+  category: Jenkins plugin
+  plugin_installations:
+    sysdig-secure: 137
+  vendor_control:
+  - 'sysdig-secure: maintainer display name ''Sysdig Inc'' -> register-name (register-name ''sysdig'' = sysdig;
+    no wikidata P856)'
+  signal_note: 'plugins.jenkins.io listing maintained by the vendor itself (vendor-control signal: register-name);
+    plugin_installations (stats.currentInstalls) is the weight, recorded as context, never counted; listing alone
+    = participation, Jenkins has no certification tier'
+  detected_by: sweep-jenkins-cd-foundation-plugins.py
+  detected: '2026-10-22'
+  register_name_note: maintainer display name 'Sysdig Inc' -> register-name (register-name 'sysdig' = sysdig; no
+    wikidata P856)
+- partner_name: Testsigma
+  partner: testsigma
+  partner_match: register-name
+  app: Testsigma Test Plan run
+  apps:
+  - Testsigma Test Plan run (testsigma)
+  listing_count: 1
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://plugins.jenkins.io/testsigma/
+  category: Jenkins plugin
+  plugin_installations:
+    testsigma: 25
+  vendor_control:
+  - 'testsigma: maintainer display name ''Testsigma Technologies'' -> register-name (register-name ''testsigma''
+    = testsigma; wikidata P856 testsigma.com agrees or unheld)'
+  signal_note: 'plugins.jenkins.io listing maintained by the vendor itself (vendor-control signal: register-name);
+    plugin_installations (stats.currentInstalls) is the weight, recorded as context, never counted; listing alone
+    = participation, Jenkins has no certification tier'
+  detected_by: sweep-jenkins-cd-foundation-plugins.py
+  detected: '2026-10-22'
+  register_name_note: maintainer display name 'Testsigma Technologies' -> register-name (register-name 'testsigma'
+    = testsigma; wikidata P856 testsigma.com agrees or unheld)
+- partner_name: Tinfoil Security
+  partner: tinfoil-security
+  partner_match: domain
+  app: Tinfoil Security
+  apps:
+  - Tinfoil Security (tinfoil-scan)
+  listing_count: 1
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://plugins.jenkins.io/tinfoil-scan/
+  category: Jenkins plugin
+  plugin_installations:
+    tinfoil-scan: 11
+  vendor_control:
+  - 'tinfoil-scan: Maven groupId com.tinfoilsecurity.plugins -> tinfoilsecurity.com (domain)'
+  signal_note: 'plugins.jenkins.io listing maintained by the vendor itself (vendor-control signal: groupId-domain);
+    plugin_installations (stats.currentInstalls) is the weight, recorded as context, never counted; listing alone
+    = participation, Jenkins has no certification tier'
+  detected_by: sweep-jenkins-cd-foundation-plugins.py
+  detected: '2026-10-22'
+- partner_name: Tricentis
+  partner: tricentis
+  partner_match: register
+  app: Tricentis Continuous Integration
+  apps:
+  - Tricentis Continuous Integration (tricentis-ci)
+  listing_count: 1
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://plugins.jenkins.io/tricentis-ci/
+  category: Jenkins plugin
+  plugin_installations:
+    tricentis-ci: 104
+  vendor_control:
+  - 'tricentis-ci: maintainer account ''tricentis'' is the GitHub organization on all/tricentis''s apis.yml'
+  signal_note: 'plugins.jenkins.io listing maintained by the vendor itself (vendor-control signal: maintainer-account=github-org);
+    plugin_installations (stats.currentInstalls) is the weight, recorded as context, never counted; listing alone
+    = participation, Jenkins has no certification tier'
+  detected_by: sweep-jenkins-cd-foundation-plugins.py
+  detected: '2026-10-22'
+  match_basis: maintainer account = the vendor's GitHub organization (apis.yml GitHubOrganization)
+- partner_name: Twilio
+  partner: null
+  partner_match: null
+  app: TwilioNotifier
+  apps:
+  - TwilioNotifier (TwilioNotifier)
+  listing_count: 1
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://plugins.jenkins.io/TwilioNotifier/
+  category: Jenkins plugin
+  plugin_installations:
+    TwilioNotifier: 48
+  vendor_control:
+  - 'TwilioNotifier: Maven groupId com.twilio.jenkins -> twilio.com (domain)'
+  signal_note: 'plugins.jenkins.io listing maintained by the vendor itself (vendor-control signal: groupId-domain);
+    plugin_installations (stats.currentInstalls) is the weight, recorded as context, never counted; listing alone
+    = participation, Jenkins has no certification tier'
+  detected_by: sweep-jenkins-cd-foundation-plugins.py
+  detected: '2026-10-22'
+  partner_held:
+    candidate: twilio
+    why: 'market-fit gate: partner''s own tags carry no software-delivery / developer-tools term'
+- partner_name: Veracode
+  partner: veracode
+  partner_match: domain
+  app: Veracode Scan
+  apps:
+  - Veracode Scan (veracode-scan)
+  listing_count: 1
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://plugins.jenkins.io/veracode-scan/
+  category: Jenkins plugin
+  plugin_installations:
+    veracode-scan: 1305
+  vendor_control:
+  - 'veracode-scan: Maven groupId com.veracode.jenkins -> veracode.com (domain)'
+  signal_note: 'plugins.jenkins.io listing maintained by the vendor itself (vendor-control signal: groupId-domain);
+    plugin_installations (stats.currentInstalls) is the weight, recorded as context, never counted; listing alone
+    = participation, Jenkins has no certification tier'
+  detected_by: sweep-jenkins-cd-foundation-plugins.py
+  detected: '2026-10-22'
+- partner_name: XebiaLabs
+  partner: xebialabs
+  partner_match: domain
+  app: XebiaLabs XL Deploy
+  apps:
+  - XebiaLabs XL Deploy (deployit-plugin)
+  - XebiaLabs XL Release (xlrelease-plugin)
+  listing_count: 2
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://plugins.jenkins.io/deployit-plugin/
+  category: Jenkins plugin
+  plugin_installations:
+    deployit-plugin: 638
+    xlrelease-plugin: 208
+  vendor_control:
+  - 'deployit-plugin: Maven groupId com.xebialabs.deployit.ci -> xebialabs.com (domain)'
+  - 'xlrelease-plugin: Maven groupId com.xebialabs.ci -> xebialabs.com (domain)'
+  signal_note: 'plugins.jenkins.io listing maintained by the vendor itself (vendor-control signal: groupId-domain);
+    plugin_installations (stats.currentInstalls) is the weight, recorded as context, never counted; listing alone
+    = participation, Jenkins has no certification tier'
+  detected_by: sweep-jenkins-cd-foundation-plugins.py
+  detected: '2026-10-22'
 source:
 - https://github.com/open-telemetry/opentelemetry.io/blob/main/data/ecosystem/vendors.yaml
 - https://github.com/open-telemetry/opentelemetry.io/blob/main/data/registry/

@@ -135,46 +135,6 @@
     detected: '2026-10-22'
   status: not-a-workflow
   arazzo: null
-- slug: jenkins-openssf-best-practices-badge
-  label: OpenSSF Best Practices Badge
-  partner_name: OpenSSF Best Practices Badge
-  category: OpenSSF Best Practices badge (open-source project security conformance)
-  type: register
-  channel: standard-directory
-  evidence: https://www.bestpractices.dev/en/projects/3537
-  source: edge
-  relationship: standard-participant
-  contract_reference:
-    register: OpenSSF Best Practices badge projects (bestpractices.dev/en/projects.json, paged)
-    standard: OpenSSF Best Practices Badge criteria (formerly CII Best Practices; bestpractices.dev)
-    spec_file: null
-    role: badge-holder
-    registered_name: platformlabeler-plugin
-    matched_by: github-org
-    matched_on: jenkinsci
-    certified_products:
-    - product: open-source project
-      product_type: open-source project
-      standard: OpenSSF Best Practices Badge criteria (formerly CII Best Practices; bestpractices.dev)
-      lapsed: false
-      partner_tier: passing
-      projects:
-      - name: jenkins
-        id: 3538
-        url: https://www.bestpractices.dev/en/projects/3538
-        badge_level: passing
-      - name: platformlabeler-plugin
-        id: 3537
-        url: https://www.bestpractices.dev/en/projects/3537
-        badge_level: passing
-    signal_note: 'certified_products = ONE entry (product type: open-source project) with the highest CURRENT badge
-      level in partner_tier; a provider whose projects only lost the badge is lapsed: true; project names are context,
-      never counted; in_progress entries are not conformance'
-    detected_by: sweep-openssf-best-practices-badges.py
-    detected: '2026-10-22'
-    identity_source: apis.yml GitHubOrganization pointer (provider's own declaration)
-  status: not-a-workflow
-  arazzo: null
 - slug: jenkins-artifact-hub-artifact-hub
   label: Artifact Hub (artifact-hub)
   partner: artifact-hub
@@ -184,6 +144,500 @@
   marketplace: artifact-hub
   channel: partner-built
   evidence: https://artifacthub.io/packages/search?repo=jenkinsci
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: jenkins-openssf-best-practices-badge-bestpractices-dev
+  label: OpenSSF Best Practices Badge (bestpractices.dev)
+  partner_name: OpenSSF Best Practices Badge (bestpractices.dev)
+  category: OpenSSF Best Practices badge (open-source project security practices)
+  type: register
+  channel: standard-directory
+  evidence: https://www.bestpractices.dev/en/projects/3537
+  source: edge
+  relationship: standard-participant
+  contract_reference:
+    register: OpenSSF Best Practices Badge projects (www.bestpractices.dev/en/projects.json)
+    standard: OpenSSF Best Practices Badge criteria (passing / silver / gold)
+    spec_file: null
+    role: badged-project-owner
+    registered_name: platformlabeler-plugin
+    matched_domain: jenkins.io
+    matched_by: domain+name-among-holders
+    certified_products:
+    - product: open-source project
+      product_type: open-source project
+      standard: OpenSSF Best Practices Badge criteria (passing / silver / gold)
+      partner_tier: passing
+      lapsed: false
+      badge_date: '2020-01-07'
+    badged_projects:
+    - name: platformlabeler-plugin
+      id: 3537
+      badge: passing
+      url: https://www.bestpractices.dev/en/projects/3537
+    - name: jenkins
+      id: 3538
+      badge: passing
+      url: https://www.bestpractices.dev/en/projects/3538
+    signal_note: 'certified_products = ONE entry per provider (product type open-source project): highest current
+      OpenSSF Best Practices badge level in partner_tier, earliest date at that level; lapsed: true when every linked
+      project lost its badge. badged_projects is context, never counted'
+    detected_by: sweep-openssf-best-practices-badges.py
+    detected: '2026-10-22'
+  status: not-a-workflow
+  arazzo: null
+- slug: jenkins-api-fortress
+  label: API Fortress
+  partner: api-fortress
+  partner_name: API Fortress
+  category: Jenkins plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://plugins.jenkins.io/apifortress/
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: jenkins-applitools
+  label: Applitools
+  partner: applitools
+  partner_name: Applitools
+  category: Jenkins plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://plugins.jenkins.io/applitools-eyes/
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: jenkins-atlassian
+  label: Atlassian
+  partner: atlassian
+  partner_name: Atlassian
+  category: Jenkins plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://plugins.jenkins.io/atlassian-jira-software-cloud/
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: jenkins-browserstack
+  label: BrowserStack
+  partner: browserstack
+  partner_name: BrowserStack
+  category: Jenkins plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://plugins.jenkins.io/browserstack-integration/
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: jenkins-checkmarx
+  label: Checkmarx
+  partner: checkmarx
+  partner_name: Checkmarx
+  category: Jenkins plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://plugins.jenkins.io/checkmarx/
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: jenkins-cloudbees
+  label: CloudBees
+  partner: cloudbees
+  partner_name: CloudBees
+  category: Jenkins plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://plugins.jenkins.io/docker-custom-build-environment/
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: jenkins-conjur
+  label: Conjur
+  partner: conjur
+  partner_name: Conjur
+  category: Jenkins plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://plugins.jenkins.io/conjur-credentials/
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: jenkins-copado
+  label: Copado
+  partner: copado
+  partner_name: Copado
+  category: Jenkins plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://plugins.jenkins.io/copado/
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: jenkins-datadog
+  label: Datadog
+  partner: datadog
+  partner_name: Datadog
+  category: Jenkins plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://plugins.jenkins.io/datadog/
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: jenkins-data-theorem
+  label: Data Theorem
+  partner: datatheorem
+  partner_name: Data Theorem
+  category: Jenkins plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://plugins.jenkins.io/datatheorem-mobile-app-security/
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: jenkins-dynatrace
+  label: Dynatrace
+  partner: dynatrace
+  partner_name: Dynatrace
+  category: Jenkins plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://plugins.jenkins.io/dynatrace-dashboard/
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: jenkins-finite-state
+  label: Finite State
+  partner: finite-state
+  partner_name: Finite State
+  category: Jenkins plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://plugins.jenkins.io/finite-state-third-party-upload/
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: jenkins-spot-by-flexera
+  label: Spot by Flexera
+  partner: flexera
+  partner_name: Spot by Flexera
+  category: Jenkins plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://plugins.jenkins.io/spotinst/
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: jenkins-ibm
+  label: IBM
+  partner: ibm
+  partner_name: IBM
+  category: Jenkins plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://plugins.jenkins.io/ibm-cloud-devops/
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: jenkins-kobiton
+  label: Kobiton
+  partner: kobiton
+  partner_name: Kobiton
+  category: Jenkins plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://plugins.jenkins.io/kobiton-integration/
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: jenkins-lambdatest
+  label: LambdaTest
+  partner: lambdatest
+  partner_name: LambdaTest
+  category: Jenkins plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://plugins.jenkins.io/lambdatest-automation/
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: jenkins-mabl
+  label: Mabl
+  partner: mabl
+  partner_name: Mabl
+  category: Jenkins plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://plugins.jenkins.io/mabl-integration/
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: jenkins-minio
+  label: MinIO
+  partner: minio
+  partner_name: MinIO
+  category: Jenkins plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://plugins.jenkins.io/minio-storage/
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: jenkins-neuvector
+  label: NeuVector
+  partner: neuvector
+  partner_name: NeuVector
+  category: Jenkins plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://plugins.jenkins.io/neuvector-vulnerability-scanner/
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: jenkins-octopus-deploy
+  label: Octopus Deploy
+  partner: octopus-deploy
+  partner_name: Octopus Deploy
+  category: Jenkins plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://plugins.jenkins.io/octopusdeploy/
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: jenkins-opslevel
+  label: OpsLevel
+  partner: opslevel
+  partner_name: OpsLevel
+  category: Jenkins plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://plugins.jenkins.io/opslevel/
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: jenkins-parallels
+  label: Parallels
+  partner: parallels
+  partner_name: Parallels
+  category: Jenkins plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://plugins.jenkins.io/parallels-desktop/
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: jenkins-qualys
+  label: Qualys
+  partner: qualys
+  partner_name: Qualys
+  category: Jenkins plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://plugins.jenkins.io/qualys-was/
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: jenkins-rapid7
+  label: Rapid7
+  partner: rapid7
+  partner_name: Rapid7
+  category: Jenkins plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://plugins.jenkins.io/rapid7-insightvm-container-assessment/
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: jenkins-snyk
+  label: Snyk
+  partner: snyk
+  partner_name: Snyk
+  category: Jenkins plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://plugins.jenkins.io/snyk-security-scanner/
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: jenkins-split
+  label: Split
+  partner: split
+  partner_name: Split
+  category: Jenkins plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://plugins.jenkins.io/split-admin/
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: jenkins-splunk
+  label: Splunk
+  partner: splunk
+  partner_name: Splunk
+  category: Jenkins plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://plugins.jenkins.io/splunk-devops/
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: jenkins-stackrox
+  label: StackRox
+  partner: stackrox
+  partner_name: StackRox
+  category: Jenkins plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://plugins.jenkins.io/stackrox-container-image-scanner/
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: jenkins-sysdig
+  label: Sysdig
+  partner: sysdig
+  partner_name: Sysdig
+  category: Jenkins plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://plugins.jenkins.io/sysdig-secure/
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: jenkins-testsigma
+  label: Testsigma
+  partner: testsigma
+  partner_name: Testsigma
+  category: Jenkins plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://plugins.jenkins.io/testsigma/
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: jenkins-tinfoil-security
+  label: Tinfoil Security
+  partner: tinfoil-security
+  partner_name: Tinfoil Security
+  category: Jenkins plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://plugins.jenkins.io/tinfoil-scan/
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: jenkins-tricentis
+  label: Tricentis
+  partner: tricentis
+  partner_name: Tricentis
+  category: Jenkins plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://plugins.jenkins.io/tricentis-ci/
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: jenkins-twilio
+  label: Twilio
+  partner_name: Twilio
+  category: Jenkins plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://plugins.jenkins.io/TwilioNotifier/
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: jenkins-veracode
+  label: Veracode
+  partner: veracode
+  partner_name: Veracode
+  category: Jenkins plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://plugins.jenkins.io/veracode-scan/
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: jenkins-xebialabs
+  label: XebiaLabs
+  partner: xebialabs
+  partner_name: XebiaLabs
+  category: Jenkins plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://plugins.jenkins.io/deployit-plugin/
   source: edge
   relationship: platform-app
   status: not-a-workflow
