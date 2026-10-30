@@ -1,4 +1,4 @@
-# Jenkins (jenkins)
+# Jenkins
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,72 +66,147 @@
 
 Jenkins is the leading open source automation server that enables developers to reliably build, test, and deploy software. Jenkins exposes a machine-consumable Remote Access API for nearly every resource it manages, available in XML (with XPath filtering), JSON (with JSONP), and a Python-compatible variant, and supports HTTP Basic auth with API tokens for scripted clients.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/jenkins/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/jenkins/refs/heads/main/apis.yml)
+**Areas:** Automation · Build Server · CI/CD · Continuous Delivery · Continuous Integration · DevOps · Open Source · Remote Access API
 
-## Scope
+## Jenkins on APIs.io
 
-- **Type:** Index
+Everything profiled for Jenkins is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/jenkins/](https://apis.io/providers/jenkins/)** — or go straight to one of the APIs or properties below.
 
-## Tags
+### APIs (4)
 
-- Automation
-- Build Server
-- CI/CD
-- Continuous Delivery
-- Continuous Integration
-- DevOps
-- Open Source
-- Remote Access API
+- [Jenkins Computer API](https://apis.io/apis/jenkins/jenkins-computer-api/) — Connected build agents.
+- [Jenkins Jobs API](https://apis.io/apis/jenkins/jenkins-jobs-api/) — Jenkins jobs and their builds.
+- [Jenkins Queue API](https://apis.io/apis/jenkins/jenkins-queue-api/) — The build queue.
+- [Jenkins Server API](https://apis.io/apis/jenkins/jenkins-server-api/) — Information about the Jenkins instance.
 
-## Timestamps
+### Published properties
 
-- **Created:** 2024-01-01
-- **Modified:** 2026-05-19
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-## APIs
+#### Arazzo workflows (4)
 
-### Jenkins Remote Access API
+Multi-step workflows that chain operations into a business task.
 
-Jenkins provides a machine-consumable Remote Access API to nearly every resource it exposes. The API is reached by appending /api/ to any Jenkins resource URL (top-level, jobs, builds, queue, nodes, views, etc.), is available in XML, JSON (JSONP), and Python variants, and supports authenticated requests via HTTP Basic auth with API tokens. Common operations include triggering builds, retrieving job and build information, and inspecting build queues, with depth and tree query parameters for controlling response shape.
+- [Jenkins Discover Jobs and Inspect the Latest Build](https://apis.io/arazzos/jenkins/jenkins-inspect-job-latest-build-workflow/)
+- [Jenkins Instance Health and Capacity Check](https://apis.io/arazzos/jenkins/jenkins-instance-health-check-workflow/)
+- [Jenkins Trigger a Build and Await the Result](https://apis.io/arazzos/jenkins/jenkins-trigger-build-and-await-result-workflow/)
+- [Jenkins Trigger a Parameterized Build and Await the Result](https://apis.io/arazzos/jenkins/jenkins-trigger-parameterized-build-workflow/)
 
-- **Human URL:** [https://www.jenkins.io/doc/book/using/remote-access-api/](https://www.jenkins.io/doc/book/using/remote-access-api/)
+#### MCP servers (1)
 
-#### Tags
+Model Context Protocol servers that expose the API to agents.
 
-- JSON
-- Python
-- Remote Access
-- REST API
-- XML
+- [jenkins-mcp-server](https://apis.io/servers/jenkins/jenkins-mcp-server/)
 
-#### Properties
+#### Agentic access (1)
 
-- [Documentation](https://www.jenkins.io/doc/book/using/remote-access-api/)
-- [Authentication](https://www.jenkins.io/doc/book/system-administration/authenticating-scripted-clients/)
-- [A P I Tokens](https://www.jenkins.io/doc/book/managing/system-configuration/#configuring-api-tokens)
-- [OpenAPI](openapi/jenkins-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/jenkins.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/jenkins.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+Which operations an agent can call, which act, and which need a human in the loop.
 
-## Common Properties
+- [Jenkins Agentic Access](https://apis.io/agentic-access/jenkins/jenkins-agentic-access/)
 
-- [LinkedIn](https://www.linkedin.com/company/jenkinsio)
+#### Collections (5)
+
+Postman and Open Collection request collections.
+
+- [Jenkins Remote Access API](https://apis.io/collections/jenkins/open-jenkins/)
+- [Jenkins Remote Access Computer API](https://apis.io/collections/jenkins/open-jenkins-computer-api/)
+- [Jenkins Remote Access Computer Jobs API](https://apis.io/collections/jenkins/open-jenkins-jobs-api/)
+- [Jenkins Remote Access Computer Queue API](https://apis.io/collections/jenkins/open-jenkins-queue-api/)
+- [Jenkins Remote Access Computer Server API](https://apis.io/collections/jenkins/open-jenkins-server-api/)
+
+#### Overlays (1)
+
+OpenAPI overlays, including conversational phrasing for each operation.
+
+- [Jenkins Openapi Overlay](https://apis.io/overlays/jenkins/jenkins-openapi-overlay/)
+
+#### Security (3)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Jenkins Authentication](https://apis.io/security/jenkins/jenkins-authentication/)
+- [Jenkins Domain Security](https://apis.io/security/jenkins/jenkins-domain-security/)
+- [Jenkins Vulnerability Disclosure](https://apis.io/security/jenkins/jenkins-vulnerability-disclosure/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Jenkins Plans Pricing](https://apis.io/plans/jenkins/jenkins-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Jenkins Rate Limits](https://apis.io/rate-limits/jenkins/jenkins-rate-limits/)
+
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [Jenkins Finops](https://apis.io/finops/jenkins/jenkins-finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
 - [Website](https://www.jenkins.io/)
-- [Getting Started](https://www.jenkins.io/doc/pipeline/tour/getting-started/)
 - [Documentation](https://www.jenkins.io/doc/)
-- [Installation](https://www.jenkins.io/doc/book/installing/)
-- [Plugins](https://plugins.jenkins.io/)
-- [Tutorials](https://www.jenkins.io/doc/tutorials/)
+- [Getting started](https://www.jenkins.io/doc/pipeline/tour/getting-started/)
 - [Blog](https://www.jenkins.io/node/)
-- [Community](https://www.jenkins.io/participate/)
-- [GitHub Organization](https://github.com/jenkinsci)
-- [Security Advisories](https://www.jenkins.io/security/advisories/)
-- [Governance](https://www.jenkins.io/project/governance/)
-- [Roadmap](https://www.jenkins.io/project/roadmap/)
-- [Privacy Policy](https://www.jenkins.io/privacy/)
-- [Terms of Service](https://www.jenkins.io/project/conduct/)
+- [Terms of service](https://www.jenkins.io/project/conduct/)
+- [Privacy policy](https://www.jenkins.io/privacy/)
+- [GitHub](https://github.com/jenkinsci)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Kin Score 35.1** — thin · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 61.7 |
+| Contract quality | 42.2 |
+| Contract governance | 4.5 |
+| Operational transparency | 31.6 |
+| Developer ergonomics | 45.2 |
+| Access clarity | 18.4 |
+
+**Agent readiness 21.3** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | documented (partial credit) |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | — |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 26.5** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/jenkins/](https://apis.io/providers/jenkins/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Jenkins: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/jenkins/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
